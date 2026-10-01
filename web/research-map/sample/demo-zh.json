@@ -1,0 +1,900 @@
+{
+ "schema": "auto-research/research-map-v1",
+ "built_at": "2026-10-01T20:33:01Z",
+ "lang": "zh",
+ "project": "审稿人读附录吗？",
+ "ref": "main",
+ "head": "b3f93d94f7e38007c45ff92ab2b3e1f8992cf34b8cb2077f6697ec0ae34e63d2",
+ "head_at": "2026-09-30T16:41:00Z",
+ "head_age_days": 1.2,
+ "since": {
+  "commit": "f94125781b09301e49a1f6189a4ef476e3bc382ab1418cd3189119acbf851322",
+  "at": "2026-09-28T09:21:00Z",
+  "source": "last_view"
+ },
+ "root": "R-0",
+ "nodes": [
+  {
+   "id": "R-0",
+   "title": "审稿人很少读附录，而这会体现在评分上",
+   "depth": 0,
+   "parent": null,
+   "children": [
+    "N-1",
+    "N-2",
+    "N-3",
+    "N-4",
+    "N-5"
+   ],
+   "type": "narrative",
+   "epistemic": "PENDING",
+   "narrative": "ACTIVE",
+   "roles": [],
+   "summary": "一篇测量论文：审稿意见多大程度上涉及附录，以及这让作者付出什么代价。",
+   "statement": "附录参与度低，而且有后果",
+   "badges": {
+    "new": false,
+    "changed": false,
+    "moved": false,
+    "refute": 0,
+    "conflict": false,
+    "support": 0,
+    "figure": 0,
+    "no_evidence": false,
+    "no_figure": true,
+    "lever": false,
+    "live_bet": false,
+    "signed": false,
+    "taste": 0
+   },
+   "change": null,
+   "evidence": null,
+   "taste": [],
+   "signed": [],
+   "lever": null,
+   "live_bet": null
+  },
+  {
+   "id": "N-1",
+   "title": "动机：附录军备竞赛",
+   "depth": 1,
+   "parent": "R-0",
+   "children": [
+    "C-1"
+   ],
+   "type": "narrative",
+   "epistemic": "PENDING",
+   "narrative": "ACTIVE",
+   "roles": [],
+   "summary": "附录越写越长，审稿时间却没变。",
+   "statement": "",
+   "badges": {
+    "new": false,
+    "changed": false,
+    "moved": false,
+    "refute": 0,
+    "conflict": false,
+    "support": 0,
+    "figure": 0,
+    "no_evidence": false,
+    "no_figure": false,
+    "lever": false,
+    "live_bet": false,
+    "signed": false,
+    "taste": 0
+   },
+   "change": null,
+   "evidence": null,
+   "taste": [],
+   "signed": [],
+   "lever": null,
+   "live_bet": null
+  },
+  {
+   "id": "C-1",
+   "title": "附录篇幅中位数在 2018 到 2025 年间涨到三倍",
+   "depth": 2,
+   "parent": "N-1",
+   "children": [],
+   "type": "claim",
+   "epistemic": "HELD",
+   "narrative": "ACTIVE",
+   "roles": [],
+   "summary": "",
+   "statement": "在 12,000 个 OpenReview 讨论串里，附录篇幅中位数从 6 页涨到 19 页。",
+   "badges": {
+    "new": false,
+    "changed": false,
+    "moved": false,
+    "refute": 0,
+    "conflict": false,
+    "support": 1,
+    "figure": 0,
+    "no_evidence": false,
+    "no_figure": false,
+    "lever": false,
+    "live_bet": false,
+    "signed": false,
+    "taste": 0
+   },
+   "change": null,
+   "evidence": {
+    "supports": [
+     "ledger:E-01 抓取 2018–2025 年 12,000 个 OpenReview 讨论串"
+    ],
+    "refutes": [],
+    "figures": [],
+    "conflict": false
+   },
+   "taste": [],
+   "signed": [],
+   "lever": null,
+   "live_bet": null
+  },
+  {
+   "id": "N-2",
+   "title": "测量：审稿意见提到附录了吗？",
+   "depth": 1,
+   "parent": "R-0",
+   "children": [
+    "C-3",
+    "C-4"
+   ],
+   "type": "narrative",
+   "epistemic": "PENDING",
+   "narrative": "ACTIVE",
+   "roles": [],
+   "summary": "逐条解析审稿意见里对附录的引用。",
+   "statement": "",
+   "badges": {
+    "new": false,
+    "changed": false,
+    "moved": false,
+    "refute": 0,
+    "conflict": false,
+    "support": 0,
+    "figure": 0,
+    "no_evidence": false,
+    "no_figure": false,
+    "lever": false,
+    "live_bet": false,
+    "signed": false,
+    "taste": 0
+   },
+   "change": null,
+   "evidence": null,
+   "taste": [],
+   "signed": [],
+   "lever": null,
+   "live_bet": null
+  },
+  {
+   "id": "C-3",
+   "title": "去重之后，只有 9% 的审稿意见引用附录",
+   "depth": 2,
+   "parent": "N-2",
+   "children": [],
+   "type": "claim",
+   "epistemic": "HELD",
+   "narrative": "ACTIVE",
+   "roles": [
+    "headline"
+   ],
+   "summary": "",
+   "statement": "去掉重复引用同一条目的审稿意见后，9.1% 的审稿意见引用了编号的附录条目。",
+   "badges": {
+    "new": false,
+    "changed": true,
+    "moved": false,
+    "refute": 0,
+    "conflict": false,
+    "support": 1,
+    "figure": 0,
+    "no_evidence": false,
+    "no_figure": true,
+    "lever": false,
+    "live_bet": false,
+    "signed": true,
+    "taste": 0
+   },
+   "change": {
+    "kinds": [
+     "changed"
+    ],
+    "fields": [
+     "title",
+     "statement"
+    ],
+    "commits": [
+     {
+      "id": "fe16bc6d4226",
+      "at": "2026-09-30",
+      "kind": "refine",
+      "cause": "cause_none",
+      "by": "by_main",
+      "trigger": null,
+      "message": "去重后收紧测量结论",
+      "counterfactual": null
+     }
+    ],
+    "before": {
+     "title": "只有 11% 的审稿意见引用了附录里的内容",
+     "statement": "11.4% 的审稿意见引用了编号的附录条目，其中大部分是证明。"
+    },
+    "after": {
+     "title": "去重之后，只有 9% 的审稿意见引用附录",
+     "statement": "去掉重复引用同一条目的审稿意见后，9.1% 的审稿意见引用了编号的附录条目。"
+    }
+   },
+   "evidence": {
+    "supports": [
+     "ledger:E-02 对全部审稿意见做引用解析"
+    ],
+    "refutes": [],
+    "figures": [],
+    "conflict": false
+   },
+   "taste": [],
+   "signed": [
+    "decision:headline-11pct"
+   ],
+   "lever": null,
+   "live_bet": null
+  },
+  {
+   "id": "C-4",
+   "title": "附录引用集中在审稿期的最后两天",
+   "depth": 2,
+   "parent": "N-2",
+   "children": [],
+   "type": "claim",
+   "epistemic": "PENDING",
+   "narrative": "ACTIVE",
+   "roles": [],
+   "summary": "",
+   "statement": "如果审稿人真读附录，也是赶在截止前读。",
+   "badges": {
+    "new": false,
+    "changed": false,
+    "moved": false,
+    "refute": 0,
+    "conflict": false,
+    "support": 0,
+    "figure": 0,
+    "no_evidence": false,
+    "no_figure": false,
+    "lever": false,
+    "live_bet": true,
+    "signed": false,
+    "taste": 0
+   },
+   "change": null,
+   "evidence": null,
+   "taste": [],
+   "signed": [],
+   "lever": null,
+   "live_bet": {
+    "node": "C-4",
+    "title": "附录引用集中在审稿期的最后两天",
+    "resolution_condition": "2025 年的时间戳数据到位",
+    "live_bet": true,
+    "bearing": false
+   }
+  },
+  {
+   "id": "N-3",
+   "title": "后果：没人读的附录让作者付出什么",
+   "depth": 1,
+   "parent": "R-0",
+   "children": [
+    "C-6",
+    "C-9"
+   ],
+   "type": "narrative",
+   "epistemic": "PENDING",
+   "narrative": "ACTIVE",
+   "roles": [],
+   "summary": "评分、反驳，以及什么能让它们变化。",
+   "statement": "",
+   "badges": {
+    "new": false,
+    "changed": false,
+    "moved": false,
+    "refute": 0,
+    "conflict": false,
+    "support": 0,
+    "figure": 0,
+    "no_evidence": false,
+    "no_figure": false,
+    "lever": false,
+    "live_bet": false,
+    "signed": false,
+    "taste": 0
+   },
+   "change": null,
+   "evidence": null,
+   "taste": [],
+   "signed": [],
+   "lever": null,
+   "live_bet": null
+  },
+  {
+   "id": "C-6",
+   "title": "在反驳里指向附录，能挽回半分",
+   "depth": 2,
+   "parent": "N-3",
+   "children": [],
+   "type": "claim",
+   "epistemic": "PENDING",
+   "narrative": "ACTIVE",
+   "roles": [],
+   "summary": "",
+   "statement": "作者在反驳里引用附录时，严谨性评分能挽回大约一半的差距。本文的一个局限是，这一效应在 2023 年的数据上没能复现。",
+   "badges": {
+    "new": false,
+    "changed": true,
+    "moved": false,
+    "refute": 0,
+    "conflict": false,
+    "support": 0,
+    "figure": 0,
+    "no_evidence": false,
+    "no_figure": false,
+    "lever": false,
+    "live_bet": false,
+    "signed": false,
+    "taste": 1
+   },
+   "change": {
+    "kinds": [
+     "changed"
+    ],
+    "fields": [
+     "statement"
+    ],
+    "commits": [
+     {
+      "id": "eee2401a07d6",
+      "at": "2026-09-30",
+      "kind": "refine",
+      "cause": "cause_none",
+      "by": "by_main",
+      "trigger": null,
+      "message": "给反驳结果加一句保留意见",
+      "counterfactual": null
+     }
+    ],
+    "before": {
+     "statement": "作者在反驳里引用附录时，严谨性评分能挽回大约一半的差距。"
+    },
+    "after": {
+     "statement": "作者在反驳里引用附录时，严谨性评分能挽回大约一半的差距。本文的一个局限是，这一效应在 2023 年的数据上没能复现。"
+    }
+   },
+   "evidence": null,
+   "taste": [
+    {
+     "rule": "T-01",
+     "rule_text": "别把自己的工作写成弱点",
+     "node": "C-6",
+     "title": "在反驳里指向附录，能挽回半分",
+     "field": "statement",
+     "match": "局限",
+     "excerpt": "录时，严谨性评分能挽回大约一半的差距。本文的一个局限是，这一效应在 2023 年的数据上没能复现。",
+     "quote": "别递刀子给审稿人。"
+    }
+   ],
+   "signed": [],
+   "lever": null,
+   "live_bet": null
+  },
+  {
+   "id": "C-9",
+   "title": "引用附录的审稿人，审稿意见长 38%",
+   "depth": 2,
+   "parent": "N-3",
+   "children": [],
+   "type": "claim",
+   "epistemic": "HELD",
+   "narrative": "ACTIVE",
+   "roles": [
+    "flagship"
+   ],
+   "summary": "",
+   "statement": "投入程度体现在工作量上：引用附录的审稿意见要长 38%。",
+   "badges": {
+    "new": true,
+    "changed": false,
+    "moved": false,
+    "refute": 0,
+    "conflict": false,
+    "support": 1,
+    "figure": 0,
+    "no_evidence": false,
+    "no_figure": true,
+    "lever": false,
+    "live_bet": false,
+    "signed": false,
+    "taste": 0
+   },
+   "change": {
+    "kinds": [
+     "added"
+    ],
+    "fields": [],
+    "commits": [
+     {
+      "id": "2a2675b2dc0f",
+      "at": "2026-09-30",
+      "kind": "refine",
+      "cause": "cause_none",
+      "by": "by_main",
+      "trigger": null,
+      "message": "加一个更干净的参与度结果",
+      "counterfactual": null
+     },
+     {
+      "id": "a7f249104ddb",
+      "at": "2026-09-30",
+      "kind": "restructure",
+      "cause": "cause_unforced",
+      "by": "by_main",
+      "trigger": null,
+      "message": "重新定框：参与度结果领衔，严谨性扣分移到稳健性部分",
+      "counterfactual": null
+     }
+    ]
+   },
+   "evidence": {
+    "supports": [
+     "ledger:E-04 审稿长度模型"
+    ],
+    "refutes": [],
+    "figures": [],
+    "conflict": false
+   },
+   "taste": [],
+   "signed": [],
+   "lever": null,
+   "live_bet": null
+  },
+  {
+   "id": "N-4",
+   "title": "会议可以做什么",
+   "depth": 1,
+   "parent": "R-0",
+   "children": [
+    "C-7"
+   ],
+   "type": "narrative",
+   "epistemic": "PENDING",
+   "narrative": "ACTIVE",
+   "roles": [],
+   "summary": "低成本的干预，以及怎么检验它们。",
+   "statement": "",
+   "badges": {
+    "new": false,
+    "changed": false,
+    "moved": false,
+    "refute": 0,
+    "conflict": false,
+    "support": 0,
+    "figure": 0,
+    "no_evidence": false,
+    "no_figure": false,
+    "lever": false,
+    "live_bet": false,
+    "signed": false,
+    "taste": 0
+   },
+   "change": null,
+   "evidence": null,
+   "taste": [],
+   "signed": [],
+   "lever": null,
+   "live_bet": null
+  },
+  {
+   "id": "C-7",
+   "title": "一页纸的“附录地图”能提高附录引用",
+   "depth": 2,
+   "parent": "N-4",
+   "children": [],
+   "type": "claim",
+   "epistemic": "PENDING",
+   "narrative": "ACTIVE",
+   "roles": [],
+   "summary": "",
+   "statement": "在正文末尾放一张结构化的附录地图，审稿人就会用上附录。",
+   "badges": {
+    "new": false,
+    "changed": false,
+    "moved": false,
+    "refute": 1,
+    "conflict": false,
+    "support": 0,
+    "figure": 0,
+    "no_evidence": false,
+    "no_figure": false,
+    "lever": false,
+    "live_bet": true,
+    "signed": false,
+    "taste": 0
+   },
+   "change": null,
+   "evidence": {
+    "supports": [],
+    "refutes": [
+     "ledger:E-05 安慰剂：给对照论文随机加“附录地图”"
+    ],
+    "figures": [],
+    "conflict": false
+   },
+   "taste": [],
+   "signed": [],
+   "lever": null,
+   "live_bet": {
+    "node": "C-7",
+    "title": "一页纸的“附录地图”能提高附录引用",
+    "resolution_condition": "两个研讨会的随机化试点出结果",
+    "live_bet": true,
+    "bearing": false
+   }
+  },
+  {
+   "id": "N-5",
+   "title": "附录：稳健性检验",
+   "depth": 1,
+   "parent": "R-0",
+   "children": [
+    "C-5"
+   ],
+   "type": "narrative",
+   "epistemic": "PENDING",
+   "narrative": "ACTIVE",
+   "roles": [],
+   "summary": "成立，但不是主线的结果。",
+   "statement": "",
+   "badges": {
+    "new": true,
+    "changed": false,
+    "moved": false,
+    "refute": 0,
+    "conflict": false,
+    "support": 0,
+    "figure": 0,
+    "no_evidence": false,
+    "no_figure": false,
+    "lever": false,
+    "live_bet": false,
+    "signed": false,
+    "taste": 0
+   },
+   "change": {
+    "kinds": [
+     "added"
+    ],
+    "fields": [],
+    "commits": [
+     {
+      "id": "d7483e0550c4",
+      "at": "2026-09-30",
+      "kind": "restructure",
+      "cause": "cause_unforced",
+      "by": "by_main",
+      "trigger": null,
+      "message": "新开一个稳健性附录",
+      "counterfactual": null
+     },
+     {
+      "id": "7b4f5b6cbfac",
+      "at": "2026-09-30",
+      "kind": "refine",
+      "cause": "cause_none",
+      "by": "by_main",
+      "trigger": null,
+      "message": "把严谨性扣分挪进附录",
+      "counterfactual": null
+     }
+    ]
+   },
+   "evidence": null,
+   "taste": [],
+   "signed": [],
+   "lever": null,
+   "live_bet": null
+  },
+  {
+   "id": "C-5",
+   "title": "证明只放附录的论文，严谨性评分更低",
+   "depth": 2,
+   "parent": "N-5",
+   "children": [],
+   "type": "claim",
+   "epistemic": "HELD",
+   "narrative": "DEMOTED",
+   "roles": [],
+   "summary": "",
+   "statement": "在主题和篇幅匹配后，把证明挪进附录会让严谨性评分低 0.31 分。",
+   "badges": {
+    "new": false,
+    "changed": true,
+    "moved": true,
+    "refute": 0,
+    "conflict": false,
+    "support": 1,
+    "figure": 0,
+    "no_evidence": false,
+    "no_figure": false,
+    "lever": true,
+    "live_bet": false,
+    "signed": false,
+    "taste": 0
+   },
+   "change": {
+    "kinds": [
+     "changed",
+     "moved"
+    ],
+    "fields": [
+     "state",
+     "disposition_meta"
+    ],
+    "commits": [
+     {
+      "id": "a7f249104ddb",
+      "at": "2026-09-30",
+      "kind": "restructure",
+      "cause": "cause_unforced",
+      "by": "by_main",
+      "trigger": null,
+      "message": "重新定框：参与度结果领衔，严谨性扣分移到稳健性部分",
+      "counterfactual": null
+     },
+     {
+      "id": "7b4f5b6cbfac",
+      "at": "2026-09-30",
+      "kind": "refine",
+      "cause": "cause_none",
+      "by": "by_main",
+      "trigger": null,
+      "message": "把严谨性扣分挪进附录",
+      "counterfactual": null
+     }
+    ],
+    "before": {
+     "state": {
+      "epistemic": "HELD",
+      "narrative": "ACTIVE"
+     }
+    },
+    "after": {
+     "state": {
+      "epistemic": "HELD",
+      "narrative": "DEMOTED"
+     }
+    },
+    "moved_from": "后果：没人读的附录让作者付出什么"
+   },
+   "evidence": {
+    "supports": [
+     "ledger:E-03 配对样本：证明放正文 vs 只放附录"
+    ],
+    "refutes": [],
+    "figures": [],
+    "conflict": false
+   },
+   "taste": [],
+   "signed": [],
+   "lever": {
+    "event": "LEVER_DEBT",
+    "node": "C-5",
+    "title": "证明只放附录的论文，严谨性评分更低",
+    "roles_held": [
+     "flagship"
+    ],
+    "demoted_commit": "a7f249104ddb95b77059fd87c3a41356be54d9832abdf1403563bf00f21f650b",
+    "demoted_at": "2026-09-30T16:21:00Z",
+    "cause": "unforced",
+    "replacement": null
+   },
+   "live_bet": null
+  }
+ ],
+ "dropped": [
+  {
+   "id": "C-2",
+   "title": "作者为了满足页数限制，把关键结果挪进附录",
+   "disposition": "DROPPED",
+   "reason": "撞了前人工作：Smith & Lee (2025) 已经测过",
+   "basis_refs": [],
+   "commit": {
+    "id": "b3f93d94f7e3",
+    "at": "2026-09-30",
+    "kind": "refine",
+    "cause": "cause_none",
+    "by": "by_main",
+    "trigger": null,
+    "message": "删掉前人已经覆盖的动机论断",
+    "counterfactual": null
+   }
+  }
+ ],
+ "log": [
+  {
+   "id": "fe16bc6d4226",
+   "at": "2026-09-30",
+   "kind": "refine",
+   "cause": "cause_none",
+   "by": "by_main",
+   "trigger": null,
+   "message": "去重后收紧测量结论",
+   "counterfactual": null,
+   "at_full": "2026-09-30T16:03:00Z",
+   "nodes": [
+    "C-3"
+   ],
+   "ops": [
+    {
+     "op": "patch_fields",
+     "id": "C-3"
+    }
+   ]
+  },
+  {
+   "id": "d7483e0550c4",
+   "at": "2026-09-30",
+   "kind": "restructure",
+   "cause": "cause_unforced",
+   "by": "by_main",
+   "trigger": null,
+   "message": "新开一个稳健性附录",
+   "counterfactual": null,
+   "at_full": "2026-09-30T16:09:00Z",
+   "nodes": [
+    "N-5",
+    "R-0"
+   ],
+   "ops": [
+    {
+     "op": "add_node",
+     "id": null
+    }
+   ]
+  },
+  {
+   "id": "2a2675b2dc0f",
+   "at": "2026-09-30",
+   "kind": "refine",
+   "cause": "cause_none",
+   "by": "by_main",
+   "trigger": null,
+   "message": "加一个更干净的参与度结果",
+   "counterfactual": null,
+   "at_full": "2026-09-30T16:14:00Z",
+   "nodes": [
+    "C-9",
+    "N-3"
+   ],
+   "ops": [
+    {
+     "op": "add_node",
+     "id": null
+    }
+   ]
+  },
+  {
+   "id": "a7f249104ddb",
+   "at": "2026-09-30",
+   "kind": "restructure",
+   "cause": "cause_unforced",
+   "by": "by_main",
+   "trigger": null,
+   "message": "重新定框：参与度结果领衔，严谨性扣分移到稳健性部分",
+   "counterfactual": null,
+   "at_full": "2026-09-30T16:21:00Z",
+   "nodes": [
+    "C-5",
+    "C-9"
+   ],
+   "ops": [
+    {
+     "op": "set_role",
+     "id": "C-9"
+    },
+    {
+     "op": "patch_fields",
+     "id": "C-5"
+    }
+   ]
+  },
+  {
+   "id": "7b4f5b6cbfac",
+   "at": "2026-09-30",
+   "kind": "refine",
+   "cause": "cause_none",
+   "by": "by_main",
+   "trigger": null,
+   "message": "把严谨性扣分挪进附录",
+   "counterfactual": null,
+   "at_full": "2026-09-30T16:22:00Z",
+   "nodes": [
+    "C-5",
+    "N-5"
+   ],
+   "ops": [
+    {
+     "op": "move_node",
+     "id": "C-5"
+    }
+   ]
+  },
+  {
+   "id": "eee2401a07d6",
+   "at": "2026-09-30",
+   "kind": "refine",
+   "cause": "cause_none",
+   "by": "by_main",
+   "trigger": null,
+   "message": "给反驳结果加一句保留意见",
+   "counterfactual": null,
+   "at_full": "2026-09-30T16:30:00Z",
+   "nodes": [
+    "C-6"
+   ],
+   "ops": [
+    {
+     "op": "patch_fields",
+     "id": "C-6"
+    }
+   ]
+  },
+  {
+   "id": "b3f93d94f7e3",
+   "at": "2026-09-30",
+   "kind": "refine",
+   "cause": "cause_none",
+   "by": "by_main",
+   "trigger": null,
+   "message": "删掉前人已经覆盖的动机论断",
+   "counterfactual": null,
+   "at_full": "2026-09-30T16:41:00Z",
+   "nodes": [
+    "C-2"
+   ],
+   "ops": [
+    {
+     "op": "detach_node",
+     "id": "C-2"
+    }
+   ]
+  }
+ ],
+ "counts": {
+  "added": 2,
+  "changed": 3,
+  "moved": 1,
+  "dropped": 1,
+  "conflict": 1,
+  "no_evidence": 0,
+  "no_figure": 3,
+  "lever": 1,
+  "live_bet": 2,
+  "signed": 1,
+  "taste": 1
+ },
+ "taste_rules": 2,
+ "reminders": [],
+ "notes": [],
+ "tz_offset_minutes": 600,
+ "staleness": {
+  "count": 1,
+  "partial": false,
+  "files": [
+   {
+    "path": "paper/sec3_consequences.tex",
+    "modified": "2026-10-01"
+   }
+  ]
+ }
+}

@@ -1,0 +1,27 @@
+@import "../src/styles.css";
+@source "./";
+
+/* The video is rendered on a known machine, so CJK can use Noto Sans SC
+   (Source Han Sans) instead of whatever the reader's system offers. */
+.video-root {
+  font-family: "IBM Plex Sans", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+}
+.video-root .font-display {
+  font-family: "Archivo", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+}
+.video-root .font-sans {
+  font-family: "IBM Plex Sans", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+}
+.video-root .font-mono {
+  font-family: "IBM Plex Mono", "Noto Sans SC", "Microsoft YaHei", monospace;
+}
+/* Chinese headlines: Smiley Sans (得意黑, OFL). Without the font file the cut
+   falls back to Noto Sans SC Bold. */
+.video-root .font-smiley {
+  font-family: "Smiley Sans", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+  font-weight: 700;
+}
+/* The window shows the real header; the search box is noise at video scale. */
+.video-window header label {
+  display: none;
+}

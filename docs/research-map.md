@@ -11,7 +11,7 @@ One self-contained HTML page (no network, no external asset). The story tree is 
 | overlay | marks | source |
 |---|---|---|
 | changes | ✚ added · ✎ rewritten (before → after per field) · ⇄ moved (from where) · a *left the story* list with the recorded reason | narrative commits between `since` and head; each change lists its commits with author (AI controller / AI chronicler / you / backfill) and cause in plain words (forced by evidence and signed · possibly forced, awaiting you · chosen · unrecorded · wording) |
-| evidence | ⚡ refuted or contested · ? held with no supporting edge · ▢ load-bearing with no figure · ⚠ lever debt · ◷ live bet · ✔ a decision you signed | `graph/current.json` (read-only), `coverage_report`, `derive_history`, approval refs |
+| evidence | ⚡ refuted or contested · ? held with no supporting edge · ▢ load-bearing with no figure · ⚠ benched (never refuted, sidelined anyway; `LEVER_DEBT` in the ledger) · ◷ live bet · ✔ a decision you signed | `graph/current.json` (read-only), `coverage_report`, `derive_history`, approval refs |
 | taste | ✦ a node the AI added or rewrote trips one of your rules | `taste/rules.jsonl` |
 
 Line style: dashed underline = pending; grey italic = demoted or merged.

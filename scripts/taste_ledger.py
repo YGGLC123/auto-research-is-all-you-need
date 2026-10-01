@@ -80,6 +80,19 @@ def clip(text, limit: int = 160) -> str:
     return text if len(text) <= limit else text[: limit - 1] + "…"
 
 
+def window(text: str, start: int, end: int, pad: int = 24) -> str:
+    """The match with ``pad`` characters either side, widened so a Latin word is
+    never cut in half. CJK has no spaces, so it keeps the plain window."""
+    def word(c: str) -> bool:
+        return c.isascii() and c.isalnum()
+    a, b = max(0, start - pad), min(len(text), end + pad)
+    while a > 0 and word(text[a - 1]) and word(text[a]):
+        a -= 1
+    while b < len(text) and word(text[b - 1]) and word(text[b]):
+        b += 1
+    return text[a:b]
+
+
 # ============================================================ the ledger
 
 def read_events(control: Path) -> list:
@@ -288,11 +301,10 @@ def check_nodes(rules: dict, nodes: dict, only_ids=None, scope: str = "story") -
                 text = str(node.get(field) or "")
                 found = regex.search(text)
                 if found:
-                    start = max(0, found.start() - 24)
                     flags.append({"rule": rule["id"], "rule_text": rule["text"], "node": node_id,
                                   "title": clip(node.get("title"), 60), "field": field,
                                   "match": found.group(0),
-                                  "excerpt": clip(text[start:found.end() + 24], 90)})
+                                  "excerpt": clip(window(text, found.start(), found.end()), 90)})
                     break
     return {"flags": flags, "reminders": reminders}
 
@@ -452,6 +464,12 @@ def run_self_test() -> int:
         ok("only rules in scope are reminders", [r["rule"] for r in story["reminders"]] == [], story)
         limited = check_nodes(current_rules(control), nodes, only_ids={"C-2"})
         ok("only_ids restricts the scan to what the AI touched", limited["flags"] == [], limited)
+        line = "Rebuttals recover about half the gap. One limitation is that the effect failed in 2023."
+        at = line.index("limitation")
+        ok("excerpts end on whole English words, CJK keeps its plain window",
+           window(line, at, at + 10, pad=22) == "about half the gap. One limitation is that the effect failed"
+           and window("本文的一个局限是这一效应没能复现", 5, 7, pad=3) == "的一个局限是这一",
+           window(line, at, at + 10, pad=22))
         paper = tmp / "proj" / "paper"
         paper.mkdir()
         (paper / "sec1.tex").write_text("We show X.\n% limitation: kept in a comment\n"

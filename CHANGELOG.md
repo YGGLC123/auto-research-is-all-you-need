@@ -1,5 +1,27 @@
 # Changelog
 
+## 3.2.0 — 2026-10-02 — the map, rebuilt
+
+- **A new research map page.** It is rebuilt with React, React Flow, Radix, Tailwind and lucide
+  icons (source in `web/research-map`) and still compiles to one offline HTML file. New in the
+  page:
+  - *the overnight receipt*: every commit since your last view, with the benching commit printed
+    in red and a *Needs your call* list. Clicking a line flies the map to that card;
+  - a red-pen redline of each rewritten statement;
+  - rubber stamps on the results that need a decision;
+  - a one-click language switch, a dark mode and adjustable text size.
+
+  `render --classic` keeps the old page as a fallback.
+- **Plain words.** The page, the READMEs and the classic labels use one vocabulary: *Benched*
+  (被雪藏) replaces "lever debt"; the others are *Called out*, *No receipts*, *Needs a figure*,
+  *Open bet*, *Your call* and *Not your style*. The ledger's event name stays `LEVER_DEBT`.
+- **A promo film** rendered with Remotion from the page's own components, in Chinese and
+  English, 16:9 and 9:16 (`web/research-map/README.md`).
+- The map model now carries the night's commits (`log`), the builder's time zone and each
+  taste rule's quote.
+- Taste-rule excerpts end on whole English words.
+- The page's data script escapes every `<`, so markup inside a claim cannot close or reopen it.
+
 ## 3.1.0 — 2026-10-02 — first public release
 
 Versions 1.x through 3.0 were developed privately on real research projects. This release

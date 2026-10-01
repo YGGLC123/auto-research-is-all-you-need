@@ -14,9 +14,17 @@
 [![Python](https://img.shields.io/badge/python-3.10%2B%20%C2%B7%20stdlib%20only-3776AB)](#家底)
 [![Self-tests](https://img.shields.io/badge/self--tests-850%2B%20checks-2ea44f)](#家底)
 
-[**在线演示**](https://ygglc123.github.io/auto-research-is-all-you-need/demo/research-map.html) · [快速上手](#快速上手) · [English](README.md)
+[**在线演示**](https://ygglc123.github.io/auto-research-is-all-you-need/demo/research-map-zh.html) · [快速上手](#快速上手) · [English](README.md)
 
 </div>
+
+<p align="center">
+  <a href="https://ygglc123.github.io/auto-research-is-all-you-need/assets/promo-zh.mp4">
+    <img src="docs/assets/promo-teaser-zh.webp" alt="昨夜小票逐行打出，点一下被雪藏的那一行，地图上的那条结果被盖上「被雪藏」" width="100%">
+  </a>
+</p>
+
+<p align="center"><sub>▶ <a href="https://ygglc123.github.io/auto-research-is-all-you-need/assets/promo-zh.mp4">看 26 秒宣传片</a>（<a href="https://ygglc123.github.io/auto-research-is-all-you-need/assets/promo-en.mp4">English</a>）。片子用 <a href="web/research-map/README.md">Remotion</a> 渲染，零件就是地图页面自己的 React 组件，画面里的都是真界面。</sub></p>
 
 ---
 
@@ -26,9 +34,9 @@
 
 **auto-research 就是这份交代，外加一套让它说实话的机制。** AI 想跑多远都行，但论文故事的每一处改动都会被记账、归类、对照你的标准检查一遍，大改动必须你签字。
 
-<p align="center"><img src="docs/assets/research-map-lever-debt.png" alt="AI 改了一夜之后的研究地图" width="100%"></p>
+<p align="center"><img src="docs/assets/research-map-benched-zh.png" alt="AI 改了一夜之后的研究地图，选中的是被雪藏的那条结果" width="100%"></p>
 
-<p align="center"><sub>自带的演示项目，第二天早上的样子。AI 一夜之间新增了一条论断和一个附录章节，改写了三条论断，挪了一条，删了一条（删的理由有记录）。它还把一个从没被反驳过的旗舰结果降级塞进了稳健性附录，地图用红色把它标成<b>杠杆债</b>。<a href="https://ygglc123.github.io/auto-research-is-all-you-need/demo/research-map.html">打开在线页面点一点</a>，或者自己生成一份：<code>python examples/build_demo.py</code>。</sub></p>
+<p align="center"><sub>自带的演示项目，第二天早上的样子。AI 一夜之间新增了一条论断和一个附录章节，改写了三条论断，挪了一条，删了一条（删的理由有记录）。它还把一个从没被推翻过的王牌结果悄悄挪进了稳健性附录，地图用红色给它盖章：<b>被雪藏</b>。<a href="https://ygglc123.github.io/auto-research-is-all-you-need/demo/research-map-zh.html">打开在线页面点一点</a>，或者自己生成一份：<code>python examples/build_demo.py --lang zh</code>。</sub></p>
 
 ## 两个问题，两个答案
 
@@ -37,26 +45,27 @@
 一张自包含的 HTML 页面，把论文的论证画成思维导图，并把**你上次看过之后**发生的一切都标在上面：
 
 | 标记 | 含义 |
-|:---:|---|
-| ✚ ✎ ⇄ | 新增 · 改写 · 挪动（删掉的论断连同理由单独列出） |
-| ⚡ | 被证据反驳或存在争议 |
-| ? | 还挂着，但没有任何证据支撑 |
-| ▢ | 承重论断，却没有图来展示 |
-| ⚠ | **杠杆债**：从没被反驳，却被降级了 |
-| ◷ | 未决的赌注：写明了怎样算结案 |
-| ✔ | 你签过字的决定 |
-| ✦ | 踩了你的口味规则 |
+|---|---|
+| **新增 · 改写 · 挪窝了** | 你上次看过之后改了啥（被删的论断连同理由单独列出） |
+| **被打脸** | 被证据推翻，或者证据之间打架 |
+| **没证据撑腰** | 还挂着，但没有任何证据支撑 |
+| **缺张图** | 承重的论断，却没有图来展示 |
+| **被雪藏** | 从没被推翻，也没被哪个新结果取代，却被悄悄挪下了主线（台账里叫 `LEVER_DEBT`） |
+| **待开奖** | 还没定论，写明了怎样算开奖 |
+| **你拍板的** | 你签过字的决定 |
+| **踩你雷区** | 踩了你的口味规则 |
 
-点开任何一个节点，都能看到改动前后的对比、是哪次提交由谁改的，以及它靠哪些证据站着。另外：
+点开任何一张卡片，都能看到改动前后的红笔对比、是哪次提交由谁改的，以及它靠哪些证据站着。另外：
 
+- **昨夜小票**：你上次看过之后的每一笔提交，打成一张小票。把结果雪藏的那一笔印成红色，底下“要你拍板”列出等你决定的事。点任意一行，地图就飞到那张卡片。
 - **过期警报**：故事上次入账之后又改过哪些文件，页面会数出来，不会假装自己是最新的。
-- **零基础设施**：不用服务器，不用账号，页面不发任何网络请求。支持深链接（`#node=C-5`），一个节点直接贴进聊天就能定位。
+- **零基础设施**：整个页面就是一个约 0.9 MB 的 HTML 文件，用 React、React Flow、Radix、Tailwind 搭好再全部内联。不用服务器，不用账号，不发任何网络请求。支持深链接（`#node=C-5`），一张卡片直接贴进聊天就能定位。
 - **用你顺手的导图软件**：导出成 markmap、XMind 或 Obsidian（JSON Canvas），在那边改名、拖动，再导回来。改动按稳定 id 变成一份**提议**补丁，审过之前什么都不会生效。
-- **自动切语言**：故事是中文就显示中文界面，是英文就显示英文。
+- **中英双语、深浅两色**：跟着故事的语言显示中文或英文，一键切换；字号和深色模式也是点一下的事。
 
 ### 👅 “AI 有品味吗？” → 没有。所以它把你的品味写下来。
 
-Anthropic 的 [TASTE 基准](https://alignment.anthropic.com/2026/taste/)让模型在两份 AI 安全研究提案里挑更好的那份，以资深研究者的偏好为标准答案：最强的模型 Fable 5 与标准答案一致 60%，抛硬币也有 50%；人类研究者约 77%；几乎所有模型都落在随机水平的两个标准差以内。所以这个插件不假装模型懂你的品味，而是给你建一本**口味台账**。
+Anthropic 的 [TASTE 基准](https://alignment.anthropic.com/2026/taste/)让模型在两份 AI 安全研究提案里挑更好的那份，以资深研究者的偏好为标准答案：最强的模型 Fable 5 与标准答案一致 60%，抛硬币也有 50%；人类研究者约 77%；几乎所有模型都落在随机水平的两个标准差以内。所以这个插件不假装模型懂你的品味，而是给你建一份**口味清单**。
 
 你只要说一次“别递刀子给审稿人”，它就变成一条带着你原话的规则：
 
@@ -70,12 +79,12 @@ T-01  avoid  "Never write our own work as a weakness"
 
 ```json
 "story_flags": [{ "rule": "T-01", "node": "C-6", "match": "limitation",
-                  "excerpt": "about half the gap. One limitation is that the effect fail" }],
+                  "excerpt": "about half the gap. One limitation is that the effect fails" }],
 "file_check":  { "flags": [{ "rule": "T-01", "file": "paper/sec3_consequences.tex", "line": 4,
                   "excerpt": "One limitation of our design is that we cannot observe reading time." }] }
 ```
 
-<p align="center"><img src="docs/assets/research-map-taste.png" alt="C-6 节点上的口味标记和改动对比" width="85%"></p>
+<p align="center"><img src="docs/assets/research-map-taste-zh.png" alt="C-6 卡片上的「踩你雷区」和改动对比" width="85%"></p>
 
 - **没有原话，就没有规则**：每条规则都必须带着你自己的话，或者一份你签过字的决定。没人说过的规则，其实是模型的品味借了你的名字，命令行会直接拒收（`RULE_SOURCE_REQUIRED`）。
 - **只追加，不涂改**：规则可以退役，历史永远保留。AI 没法手改台账，钩子会拦下直接写入，规则只能经命令行进来。
@@ -145,7 +154,7 @@ python scripts/run_selftests.py    # 跑全部自测，给一个总结论
 
 - **不是论文工厂**：它不会替你投任何稿，而且偏偏把论文工厂最想藏的东西摆在最显眼的位置。
 - **不是取代你的“AI 科学家”**：更像你希望自家 AI 出厂就带着的实验记录本、版本控制，外加一位严格的合作者。
-- **不是魔法**：核验员也会出错，口味台账只知道你告诉过它的东西。地图展示的是**已入账**的内容，账过期了它会直说。
+- **不是魔法**：核验员也会出错，口味清单只知道你告诉过它的东西。地图展示的是**已入账**的内容，账过期了它会直说。
 
 ## 常见问题
 

@@ -19,6 +19,16 @@ every AI-assisted researcher ends up asking:
 
 </div>
 
+<p align="center">
+  <a href="https://ygglc123.github.io/auto-research-is-all-you-need/assets/promo-en.mp4">
+    <img src="docs/assets/promo-teaser-en.webp" alt="The overnight receipt prints; a click on the benched line takes the map to that result, which gets stamped Benched" width="100%">
+  </a>
+</p>
+
+<p align="center"><sub>▶ <a href="https://ygglc123.github.io/auto-research-is-all-you-need/assets/promo-en.mp4">Watch the 26-second film</a>
+(<a href="https://ygglc123.github.io/auto-research-is-all-you-need/assets/promo-zh.mp4">中文版</a>). It is rendered with
+<a href="web/research-map/README.md">Remotion</a> from the map's own React components, so everything on screen is the real interface.</sub></p>
+
 ---
 
 In 2017, attention was all you needed. In 2026, your AI agent has attention to spare. Before
@@ -33,12 +43,12 @@ easiest to defend at 3 a.m.?
 far as you like. Every change to your paper's story is recorded, classified and checked against
 your own standards, and the big changes need your signature.
 
-<p align="center"><img src="docs/assets/research-map-lever-debt.png" alt="The research map, the morning after one night of AI edits" width="100%"></p>
+<p align="center"><img src="docs/assets/research-map-benched.png" alt="The research map, the morning after one night of AI edits, with the benched result selected" width="100%"></p>
 
 <p align="center"><sub>The bundled demo project, the morning after. Overnight the AI added a claim and an appendix section,
-rewrote three claims, moved one and dropped one (the reason is recorded). It also took the flagship result, which
-nothing had ever refuted, and demoted it to a robustness appendix. The map flags that in red as
-<b>lever debt</b>. <a href="https://ygglc123.github.io/auto-research-is-all-you-need/demo/research-map.html">Click around the live page</a>,
+rewrote three claims, moved one and cut one (the reason is recorded). It also took the flagship result, which
+nothing had ever refuted, and moved it to a robustness appendix. The map stamps that in red:
+<b>Benched</b>. <a href="https://ygglc123.github.io/auto-research-is-all-you-need/demo/research-map.html">Click around the live page</a>,
 or build it yourself with <code>python examples/build_demo.py</code>.</sub></p>
 
 ## Two questions, two answers
@@ -48,28 +58,33 @@ or build it yourself with <code>python examples/build_demo.py</code>.</sub></p>
 One self-contained HTML page. It shows your paper's argument as a mind map, marked with
 everything that changed since **you** last looked:
 
-| mark | meaning |
-|:---:|---|
-| ✚ ✎ ⇄ | added · rewritten · moved (dropped claims are listed with their reason) |
-| ⚡ | refuted or contested by evidence |
-| ? | held, but nothing supports it |
-| ▢ | load-bearing, but no figure shows it |
-| ⚠ | **lever debt**: demoted without ever being refuted |
-| ◷ | live bet: still open, with its resolution condition written down |
-| ✔ | a decision you signed |
-| ✦ | trips one of your taste rules |
+| badge | meaning |
+|---|---|
+| **New · Rewritten · Moved** | what changed since you last looked (cut claims are listed with their reason) |
+| **Called out** | refuted or contested by evidence |
+| **No receipts** | held, but nothing supports it |
+| **Needs a figure** | load-bearing, but no figure shows it |
+| **Benched** | never refuted, never superseded, sidelined anyway (`LEVER_DEBT` in the ledger) |
+| **Open bet** | still open, with its resolution condition written down |
+| **Your call** | a decision you signed |
+| **Not your style** | trips one of your taste rules |
 
-Click any node to see the before/after diff, the commit that changed it and who made it, and the
-evidence it stands on. There's more:
+Click any card to see the before/after redline, the commit that changed it and who made it, and
+the evidence it stands on. There's more:
 
+- **The overnight receipt.** Every commit since you last looked, printed as a receipt. The one
+  that benched a result is the red line, and *Needs your call* lists what is waiting on you.
+  Click a line and the map flies to that card.
 - **Staleness alarm.** Files that changed after the story was last recorded are counted, so the
   map never pretends to be current.
-- **Zero infrastructure.** No server, no account, no network requests. Deep links (`#node=C-5`)
-  make it easy to paste a node into a chat.
+- **Zero infrastructure.** One HTML file of about 0.9 MB, built with React, React Flow, Radix and
+  Tailwind and compiled with everything inlined. No server, no account, no network requests.
+  Deep links (`#node=C-5`) make it easy to paste a card into a chat.
 - **Bring your own mind-map app.** Export to markmap, XMind or Obsidian (JSON Canvas). Rename or
   move nodes there and import the file back. Your edits come back as a *proposed* patch keyed by
   stable ids, and nothing is applied until it's reviewed.
-- **Speaks your language.** The page switches between English and Chinese to match your story.
+- **Bilingual, light or dark.** The page follows your story's language and switches between
+  English and Chinese in one click. Text size and dark mode are a click away too.
 
 ### 👅 "Does the AI have taste?" → no. So it writes yours down.
 
@@ -78,7 +93,7 @@ of two AI-safety research proposals is better, scored against experienced resear
 preferences. The best model, Fable 5, agrees with those labels 60% of the time, where a coin flip
 gets 50%. Human researchers agree with the same labels about 77% of the time, and almost all
 models land within two standard deviations of chance. So this plugin doesn't pretend the model
-shares your taste. It keeps a **taste ledger** instead.
+shares your taste. It keeps your **taste rules** instead.
 
 Say *"Don't hand reviewers a stick to beat us with"* once, and it becomes a rule with your words
 attached:
@@ -94,7 +109,7 @@ trimmed):
 
 ```json
 "story_flags": [{ "rule": "T-01", "node": "C-6", "match": "limitation",
-                  "excerpt": "about half the gap. One limitation is that the effect fail" }],
+                  "excerpt": "about half the gap. One limitation is that the effect fails" }],
 "file_check":  { "flags": [{ "rule": "T-01", "file": "paper/sec3_consequences.tex", "line": 4,
                   "excerpt": "One limitation of our design is that we cannot observe reading time." }] }
 ```
@@ -187,7 +202,7 @@ More detail: [docs/onboarding.md](docs/onboarding.md).
   exactly what a paper mill would hide.
 - **Not an "AI scientist" that replaces you.** It's the lab notebook, version control and stern
   co-author you wish your agent shipped with.
-- **Not magic.** The verifier can be wrong, and the taste ledger only knows what you've told it.
+- **Not magic.** The verifier can be wrong, and your taste rules only know what you've told them.
   The map shows what was *recorded*, and when the record is stale, it says so.
 
 ## FAQ

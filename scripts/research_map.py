@@ -71,17 +71,17 @@ LABELS = {
         "dropped": "移出", "no_change": "没有新的改动",
         "expand_all": "全部展开", "two_levels": "两层", "only_changes": "只看改动",
         "only_problems": "只看问题", "fit": "适应窗口", "search": "搜索",
-        "ov_changes": "改动", "ov_evidence": "证据", "ov_taste": "品位",
+        "ov_changes": "改动", "ov_evidence": "证据", "ov_taste": "口味",
         "b_new": "新增", "b_changed": "改写", "b_moved": "移动了位置", "b_conflict": "有反驳或矛盾",
         "b_no_evidence": "已成立但没有证据支撑", "b_no_figure": "承重但没有图表达",
-        "b_lever": "杠杆债：没被推翻却被降级", "b_live_bet": "在飞的赌注", "b_signed": "你签过字的决定",
-        "b_taste": "和你的品位规则冲突",
+        "b_lever": "被雪藏：没被推翻，却被挪下主线", "b_live_bet": "在飞的赌注", "b_signed": "你签过字的决定",
+        "b_taste": "踩你雷区：碰了你的口味规则",
         "legend": "标记说明", "overview": "总览", "state": "状态", "roles": "角色",
         "summary": "简介", "statement": "正文", "changes": "这次的改动", "before": "改前",
         "after": "改后", "commits": "相关提交", "evidence": "证据", "supports": "支持",
-        "refutes": "反驳", "figures": "图", "taste": "品位", "rule": "规则",
+        "refutes": "反驳", "figures": "图", "taste": "口味", "rule": "规则",
         "found_in": "出现在", "left_story": "离开故事的节点", "reason": "原因",
-        "reason_unknown": "原因未记录", "reminders": "需要你判断的品位规则", "notes": "说明",
+        "reason_unknown": "原因未记录", "reminders": "需要你判断的口味规则", "notes": "说明",
         "stale_files": "故事记录之后改过的文件", "none": "无", "select_hint": "点节点看详情；点圆点折叠或展开",
         "ep_HELD": "已成立", "ep_PENDING": "待定", "ep_KILLED": "已否定",
         "nar_ACTIVE": "在故事中", "nar_DEMOTED": "已降级", "nar_MERGED": "已并入", "nar_DROPPED": "已移出",
@@ -94,8 +94,8 @@ LABELS = {
         "f_lineage": "谱系", "f_identity_key": "身份",
         "note_graph_stale": "关系层落后于事件流，证据叠层已跳过（需要先重建关系层）",
         "note_graph_missing": "这个项目还没有关系层，证据叠层为空",
-        "note_no_rules": "还没有记下任何品位规则",
-        "lever_note": "它曾是承重结论，没有被推翻，却被降级且没有接替者",
+        "note_no_rules": "还没有记下任何口味规则",
+        "lever_note": "从没被推翻，也没被哪个新结果取代，却被悄悄挪下了主线",
         "live_bet_note": "待定的承重判断，结论条件：", "signed_note": "你签字的依据：",
         "held_unsupported_note": "标为已成立，但没有任何证据边支撑它",
         "lg_dashed": "虚线下划线：待定（还没有定论）", "lg_grey": "灰色斜体：已降级或已并入",
@@ -113,7 +113,7 @@ LABELS = {
         "ov_changes": "Changes", "ov_evidence": "Evidence", "ov_taste": "Taste",
         "b_new": "new", "b_changed": "rewritten", "b_moved": "moved", "b_conflict": "refuted or contested",
         "b_no_evidence": "held without supporting evidence", "b_no_figure": "load-bearing, no figure",
-        "b_lever": "lever debt: demoted without being refuted", "b_live_bet": "live bet(s)",
+        "b_lever": "benched: sidelined without being refuted", "b_live_bet": "live bet(s)",
         "b_signed": "signed by you", "b_taste": "trips your taste rules",
         "legend": "Legend", "overview": "Overview", "state": "State", "roles": "Roles",
         "summary": "Summary", "statement": "Statement", "changes": "What changed", "before": "before",
@@ -135,7 +135,7 @@ LABELS = {
         "note_graph_stale": "The relation layer is behind its event stream; evidence overlay skipped (rebuild it first)",
         "note_graph_missing": "This project has no relation layer yet; evidence overlay is empty",
         "note_no_rules": "No taste rules recorded yet",
-        "lever_note": "A former lever, never refuted, demoted with no successor",
+        "lever_note": "Never refuted, never superseded. Sidelined anyway.",
         "live_bet_note": "Pending load-bearing bet; resolves when: ", "signed_note": "Signed basis: ",
         "held_unsupported_note": "Marked held, but no evidence edge supports it",
         "lg_dashed": "Dashed underline: pending (not settled)", "lg_grey": "Grey italic: demoted or merged",
@@ -434,6 +434,13 @@ def build_model(control: Path, ref: str = "main", since=None, lang: str = "auto"
     base = (narr.commit_snapshot(control, since_info["commit"]) if since_info["commit"]
             else narr.empty_snapshot())
     changes, dropped = change_overlay(control, chain, base, head, since_info["commit"])
+    # every commit since the last view, oldest first, with its full time and what it touched
+    ids = [c["id"] for c in chain]
+    start = ids.index(since_info["commit"]) + 1 if since_info["commit"] in ids else 0
+    log = [dict(_commit_brief(c), at_full=c.get("at", ""),
+                nodes=sorted(narr._commit_touched_ids(c)),
+                ops=[{"op": o.get("op"), "id": o.get("id")} for o in (c.get("ops") or [])][:12])
+           for c in chain[start:]][-60:]
     evidence = evidence_overlay(control, head)
     signed = signed_overlay(control, chain, head)
     history = narr.derive_history(control, ref)
@@ -447,6 +454,8 @@ def build_model(control: Path, ref: str = "main", since=None, lang: str = "auto"
         touched = {nid for nid, c in changes.items() if {"added", "changed"} & set(c["kinds"])}
         result = tl.check_nodes(rules, head["nodes"], only_ids=touched)
         for flag in result["flags"]:
+            source = (rules.get(flag["rule"]) or {}).get("source") or {}
+            flag = dict(flag, quote=clip(source.get("quote"), 200) or None)
             taste_flags.setdefault(flag["node"], []).append(flag)
         reminders = result["reminders"]
 
@@ -511,6 +520,12 @@ def build_model(control: Path, ref: str = "main", since=None, lang: str = "auto"
     if not rules:
         notes.append("note_no_rules")
     state = ros.read_json_file(control / "state.json", {}) or {}
+    # The page shows times on the clock of the machine that built it: the night the
+    # researcher actually lived through, whoever opens the file later.
+    try:
+        tz_offset = int(_parse_ts(head_at).astimezone().utcoffset().total_seconds() // 60)
+    except (ValueError, OverflowError, OSError, AttributeError):
+        tz_offset = None
     return {
         "schema": MODEL_SCHEMA, "built_at": ros.utc_now(), "lang": lang if lang in LABELS else "zh",
         "project": state.get("title") or control.parent.name, "ref": ref,
@@ -518,8 +533,8 @@ def build_model(control: Path, ref: str = "main", since=None, lang: str = "auto"
         "head_age_days": round((datetime.now(timezone.utc) - _parse_ts(head_at)).total_seconds()
                                / 86400, 1),
         "since": {"commit": since_commit, "at": since_at, "source": since_info["source"]},
-        "root": head["root"], "nodes": nodes, "dropped": dropped, "counts": counts,
-        "taste_rules": len(rules), "reminders": reminders, "notes": notes,
+        "root": head["root"], "nodes": nodes, "dropped": dropped, "log": log, "counts": counts,
+        "taste_rules": len(rules), "reminders": reminders, "notes": notes, "tz_offset_minutes": tz_offset,
         "staleness": staleness(control, head_at) if scan_files else {"count": 0, "files": [],
                                                                       "partial": False},
     }
@@ -710,11 +725,20 @@ var deep=(location.hash||"").match(/node=([^&]+)/);if(deep){var want=decodeURICo
 """
 
 
-def render_html(model: dict) -> str:
+# The page people see: a prebuilt single-file app (source in web/research-map, built
+# with `npm run build`). PAGE above stays as the plain fallback (`render --classic`).
+APP_TEMPLATE = Path(__file__).resolve().parent / "research_map_app.html"
+
+
+def render_html(model: dict, classic: bool = False) -> str:
     payload = dict(model, labels=LABELS[model["lang"]])
-    data = json.dumps(payload, ensure_ascii=False).replace("</", "<\\/")
+    # Every "<" becomes < (as Lighthouse does): escaping only "</" still lets a
+    # claim containing "<!--<script>" push the HTML parser past the closing tag.
+    data = json.dumps(payload, ensure_ascii=False).replace("<", "\\u003c")
     title = "%s — %s" % (LABELS[model["lang"]]["page_title"], model["project"])
-    return (PAGE.replace("__LANG__", "zh-CN" if model["lang"] == "zh" else "en")
+    template = PAGE if classic or not APP_TEMPLATE.exists() else APP_TEMPLATE.read_text(encoding="utf-8")
+    # data goes in last, so nothing inside the model can be mistaken for a placeholder
+    return (template.replace("__LANG__", "zh-CN" if model["lang"] == "zh" else "en")
             .replace("__TITLE__", _html_escape(title)).replace("__DATA__", data))
 
 
@@ -960,7 +984,7 @@ def cmd_render(args) -> int:
     model = build_model(control, args.ref, args.since, args.lang, scan_files=not args.no_scan)
     out = Path(args.out) if args.out else map_dir(control) / "research-map.html"
     out.parent.mkdir(parents=True, exist_ok=True)
-    ros.atomic_write(out, render_html(model))
+    ros.atomic_write(out, render_html(model, classic=args.classic))
     view = None if args.no_mark else record_view(control, model, out)
     return emit({"ok": True, "out": str(out), "bytes": out.stat().st_size, "counts": model["counts"],
                  "since": model["since"], "staleness": model["staleness"]["count"],
@@ -1083,18 +1107,33 @@ def run_self_test() -> int:
            genesis["since"])
 
         html = render_html(model)
-        payload = re.search(r'<script type="application/json" id="map-data">(.*?)</script>', html, re.S)
-        ok("page embeds the model as JSON that round-trips",
-           payload and json.loads(payload.group(1).replace("<\\/", "</"))["head"] == model["head"])
-        ok("page loads nothing from outside", not re.search(r"<script[^>]+src=|<link[^>]+href=|@import|url\(",
-                                                            html, re.I))
-        ok("page carries the labels in the model's language", "只看改动" in html and "研究地图" in html)
-        english = render_html(dict(model, lang="en"))
+        classic = render_html(model, classic=True)    # the plain fallback page
+        for name, page in (("app", html), ("classic", classic)):
+            payload = re.search(r'<script type="application/json" id="map-data">(.*?)</script>', page, re.S)
+            ok(f"{name} page embeds the model as JSON that round-trips",
+               payload and json.loads(payload.group(1))["head"] == model["head"])
+            # inline data: URIs and in-page #fragments are fine; anything fetched is not
+            ok(f"{name} page loads nothing from outside",
+               not re.search(r"<script[^>]+src=|<link[^>]+href=|@import|url\((?!\s*['\"]?(?:data:|#))", page, re.I))
+            ok(f"{name} page: deep links select a node", "#node=" in page and "location.hash" in page)
+        ok("app page is the built template with every placeholder filled",
+           APP_TEMPLATE.exists() and len(html) > 200_000
+           and not any(ph in html for ph in ("__DATA__", "__LANG__", "__TITLE__")))
+        hostile = "x</script><!--<script>alert(1)</script>"
+        page = render_html(dict(model, project=hostile))
+        payload = re.search(r'<script type="application/json" id="map-data">(.*?)</script>', page, re.S)
+        ok("markup inside the story cannot close or re-open the data script",
+           payload and "<" not in payload.group(1) and json.loads(payload.group(1))["project"] == hostile)
+        ok("app page speaks both languages in plain words", all(w in html for w in ("被雪藏", "Benched", "研究地图")))
+        ok("classic page carries the labels in the model's language", "只看改动" in classic and "研究地图" in classic)
+        english = render_html(dict(model, lang="en"), classic=True)
         ok("language follows the story: CJK root -> zh, ASCII story -> en",
            auto_lang({"root": "R", "nodes": {"R": {"title": "论文 · 叙事树"}}}) == "zh"
            and auto_lang({"root": "R", "nodes": {"R": {"title": "Graph self-test"}}}) == "en")
-        ok("deep links select a node", "#node=" in html and "location.hash" in html)
         ok("english labels available", "Changes only" in english)
+        ok("model carries the night's commits with full times",
+           all("at_full" in c and "ops" in c for c in model.get("log") or [])
+           and isinstance(model.get("tz_offset_minutes"), int))
 
         out = root / "map.html"
         code, rendered = run("research_map.py", "--project", str(root), "render", "--since", before_edits,
@@ -1210,6 +1249,8 @@ def build_parser() -> argparse.ArgumentParser:
                    help="do not record this as the researcher's view")
     p.add_argument("--no-scan", dest="no_scan", action="store_true",
                    help="skip the file-staleness scan")
+    p.add_argument("--classic", action="store_true",
+                   help="write the plain fallback page instead of the app")
     p.set_defaults(func=cmd_render)
 
     p = common(sub.add_parser("summary", help="<= 40 plain lines for the controller"))

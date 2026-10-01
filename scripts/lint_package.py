@@ -45,7 +45,9 @@ def lint(plugin_root: Path) -> dict:
     skill_names = {p.name for p in skills_dir.iterdir() if p.is_dir()} if skills_dir.exists() else set()
 
     md_files = sorted(plugin_root.rglob("*.md"))
-    md_files = [p for p in md_files if "__pycache__" not in p.parts and ".git" not in p.parts]
+    # node_modules: third-party READMEs from the web build, not part of the package
+    skip = {"__pycache__", ".git", "node_modules"}
+    md_files = [p for p in md_files if not skip.intersection(p.parts)]
 
     for md in md_files:
         rel_md = md.relative_to(plugin_root).as_posix()

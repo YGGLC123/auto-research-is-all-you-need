@@ -10,3 +10,12 @@ library/components/*/previews/
 
 # examples/build_demo.py output when run from the repo root
 demo-project/
+
+# web/research-map: dependencies, the Vite build and video renders are rebuildable.
+# The built page that ships is scripts/research_map_app.html.
+web/research-map/node_modules/
+web/research-map/dist/
+web/research-map/out/
+# Smiley Sans is fetched by hand (see web/research-map/README.md)
+web/research-map/video/public/fonts/*
+!web/research-map/video/public/fonts/.gitkeep
