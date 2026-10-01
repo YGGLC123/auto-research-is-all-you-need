@@ -73,9 +73,11 @@ evidence it stands on. There's more:
 
 ### 👅 "Does the AI have taste?" → no. So it writes yours down.
 
-On Anthropic's [TASTE benchmark](https://alignment.anthropic.com/2026/taste/), the task is to pick
-the better of two AI-safety research proposals. The best model matched experienced researchers
-60% of the time; the researchers themselves reached 77%. So this plugin doesn't pretend the model
+On Anthropic's [TASTE benchmark](https://alignment.anthropic.com/2026/taste/), models judge which
+of two AI-safety research proposals is better, scored against experienced researchers'
+preferences. The best model, Fable 5, agrees with those labels 60% of the time, where a coin flip
+gets 50%. Human researchers agree with the same labels about 77% of the time, and almost all
+models land within two standard deviations of chance. So this plugin doesn't pretend the model
 shares your taste. It keeps a **taste ledger** instead.
 
 Say *"Don't hand reviewers a stick to beat us with"* once, and it becomes a rule with your words
