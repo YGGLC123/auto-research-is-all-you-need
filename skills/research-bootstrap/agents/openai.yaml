@@ -1,0 +1,7 @@
+interface:
+  display_name: "Research Bootstrap"
+  short_description: "Intake and bootstrap a research project"
+  default_prompt: "Use $auto-research:research-bootstrap to initialize this research project and its resumable state."
+
+policy:
+  allow_implicit_invocation: false

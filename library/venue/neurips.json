@@ -1,0 +1,44 @@
+{
+  "schema": "auto-research/venue-profile-v1",
+  "id": "neurips",
+  "name": "NeurIPS / ICML single-column style",
+  "version": 1,
+  "venue_hash": "561a7bf9bc97a387",
+  "renderer_preference": [
+    "matplotlib"
+  ],
+  "style_stack": [
+    "science",
+    "no-latex"
+  ],
+  "figure_width_mm": {
+    "single": 140,
+    "double": 140
+  },
+  "max_height_mm": 230,
+  "font": {
+    "family": "serif",
+    "stack": [
+      "Times New Roman",
+      "Times",
+      "DejaVu Serif"
+    ],
+    "size_pt": 9
+  },
+  "palette": "lib:palette:okabe-ito@1",
+  "colormap": "cmc.batlow",
+  "panel_label": "(a)",
+  "vector": true,
+  "dpi": 600,
+  "export": [
+    "pdf",
+    "svg",
+    "png"
+  ],
+  "capabilities": [
+    "renderer.matplotlib",
+    "style.scienceplots",
+    "colormap.cmcrameri"
+  ],
+  "notes": "NeurIPS is single-column at 5.5 in; double is an alias of single so a width request never overflows."
+}

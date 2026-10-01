@@ -1,0 +1,7 @@
+interface:
+  display_name: "Research Interrogation"
+  short_description: "Compose adaptive research question suites"
+  default_prompt: "Use $auto-research:research-interrogation to select and apply the smallest evidence-bound question packs for this project's current uncertainty, landing verdicts as gates and blockers."
+
+policy:
+  allow_implicit_invocation: false

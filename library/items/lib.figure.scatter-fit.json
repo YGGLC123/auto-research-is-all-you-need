@@ -1,0 +1,104 @@
+{
+  "schema": "auto-research/library-item-v0",
+  "id": "lib:figure:scatter-fit",
+  "kind": "chart-template",
+  "version": 1,
+  "purpose": "Bivariate relationship with an optional least-squares fit and R-squared: cross-sections, calibration plots, predicted-versus-actual.",
+  "semantic_tags": [
+    "correlation",
+    "regression-fit",
+    "scatter",
+    "identity-line",
+    "cross-section",
+    "calibration"
+  ],
+  "venue_tags": [
+    "nature",
+    "science",
+    "ieee",
+    "rfs",
+    "jf",
+    "aaai",
+    "neurips",
+    "generic"
+  ],
+  "renderer": "matplotlib",
+  "template_function": "scatter-fit",
+  "capabilities": [
+    "renderer.matplotlib",
+    "style.scienceplots"
+  ],
+  "parameters": {
+    "aspect": 0.8,
+    "width": "single",
+    "xlabel": null,
+    "ylabel": null,
+    "title": null,
+    "panel": null,
+    "legend": true,
+    "grid": false,
+    "logx": false,
+    "logy": false,
+    "fit": "ols",
+    "show_r2": true,
+    "point_size": 8,
+    "alpha": 0.85,
+    "identity_line": false,
+    "legend_loc": "best"
+  },
+  "data_contract": {
+    "required_fields": [
+      {
+        "name": "x",
+        "role": "x",
+        "type": "quantitative"
+      },
+      {
+        "name": "y",
+        "role": "y",
+        "type": "quantitative"
+      }
+    ],
+    "optional_fields": [
+      {
+        "name": "group",
+        "role": "group",
+        "type": "nominal",
+        "note": "one colour and one fit per level"
+      },
+      {
+        "name": "label",
+        "role": "label",
+        "type": "nominal",
+        "note": "reserved for point annotation"
+      }
+    ],
+    "constraints": [
+      "the fit is plain OLS computed in stdlib; it is a visual aid, not the paper's estimate",
+      "a group with a degenerate x is drawn without a fit and reported in notes"
+    ]
+  },
+  "outputs": [
+    "pdf",
+    "svg",
+    "png",
+    "spec.vl.json"
+  ],
+  "preview": "library/previews/lib.figure.scatter-fit.png",
+  "compatibility": {
+    "python": ">=3.9",
+    "matplotlib": ">=3.5",
+    "degrades_without": [
+      "style.scienceplots",
+      "colormap.cmcrameri"
+    ]
+  },
+  "quality_state": "trial",
+  "license": "MIT",
+  "attribution": "auto-research v2.9 figure library (self-authored template)",
+  "provenance": {
+    "source_url": "https://github.com/YGGLC123/auto-research-is-all-you-need",
+    "retrieved_at": "2026-08-25T00:00:00Z",
+    "note": "written for this plugin; no third-party code copied"
+  }
+}

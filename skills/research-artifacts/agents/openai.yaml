@@ -1,0 +1,7 @@
+interface:
+  display_name: "Research Visual Director"
+  short_description: "Plan and verify figures, plots, and component kits"
+  default_prompt: "Use $auto-research:research-artifacts to probe artifact capabilities, freeze a typed Stage-2 visual prompt, then produce and verify publication artifacts or layered reusable component kits."
+
+policy:
+  allow_implicit_invocation: false

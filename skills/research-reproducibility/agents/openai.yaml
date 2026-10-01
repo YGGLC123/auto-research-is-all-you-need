@@ -1,0 +1,7 @@
+interface:
+  display_name: "Research Reproducibility"
+  short_description: "Audit, package, archive, and sync final research artifacts"
+  default_prompt: "Use $auto-research:research-reproducibility to audit and package this milestone."
+
+policy:
+  allow_implicit_invocation: false

@@ -1,0 +1,102 @@
+{
+  "schema_version": "research-artifacts/structure-snapshot-v1",
+  "artifact_id": "F1",
+  "editor": "drawio",
+  "captured_from_path": "research/artifacts/visual-program/component-kits/F1.drawio",
+  "captured_from_sha256": "",
+  "capture_method": "drawio-xml",
+  "capture_run_id": "",
+  "nodes": [
+    {
+      "native_object_id": "assembly-group",
+      "parent_native_object_id": null,
+      "component_id": "F1.assembly",
+      "kind": "assembly",
+      "visible": true,
+      "bounds": [0, 0, 1200, 600]
+    },
+    {
+      "native_object_id": "input-group",
+      "parent_native_object_id": "assembly-group",
+      "component_id": "F1.input",
+      "kind": "module",
+      "visible": true,
+      "bounds": [80, 180, 280, 180]
+    },
+    {
+      "native_object_id": "input-label",
+      "parent_native_object_id": "input-group",
+      "component_id": "F1.input.label",
+      "kind": "primitive",
+      "visible": true,
+      "bounds": [110, 220, 220, 48]
+    },
+    {
+      "native_object_id": "model-group",
+      "parent_native_object_id": "assembly-group",
+      "component_id": "F1.model",
+      "kind": "module",
+      "visible": true,
+      "bounds": [460, 180, 280, 180]
+    },
+    {
+      "native_object_id": "model-label",
+      "parent_native_object_id": "model-group",
+      "component_id": "F1.model.label",
+      "kind": "primitive",
+      "visible": true,
+      "bounds": [490, 220, 220, 48]
+    },
+    {
+      "native_object_id": "output-group",
+      "parent_native_object_id": "assembly-group",
+      "component_id": "F1.output",
+      "kind": "module",
+      "visible": true,
+      "bounds": [840, 180, 280, 180]
+    },
+    {
+      "native_object_id": "output-label",
+      "parent_native_object_id": "output-group",
+      "component_id": "F1.output.label",
+      "kind": "primitive",
+      "visible": true,
+      "bounds": [870, 220, 220, 48]
+    },
+    {
+      "native_object_id": "component-board-group",
+      "parent_native_object_id": null,
+      "component_id": null,
+      "kind": "component-board",
+      "visible": true,
+      "bounds": [0, 650, 1200, 400]
+    },
+    {
+      "native_object_id": "kit-input-group",
+      "parent_native_object_id": "component-board-group",
+      "component_id": "F1.input",
+      "kind": "module",
+      "visible": true,
+      "bounds": [80, 730, 280, 180]
+    },
+    {
+      "native_object_id": "kit-model-group",
+      "parent_native_object_id": "component-board-group",
+      "component_id": "F1.model",
+      "kind": "module",
+      "visible": true,
+      "bounds": [460, 730, 280, 180]
+    },
+    {
+      "native_object_id": "kit-output-group",
+      "parent_native_object_id": "component-board-group",
+      "component_id": "F1.output",
+      "kind": "module",
+      "visible": true,
+      "bounds": [840, 730, 280, 180]
+    }
+  ],
+  "component_board_root_native_object_ids": [
+    "component-board-group"
+  ]
+}

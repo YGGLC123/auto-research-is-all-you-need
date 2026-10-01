@@ -1,0 +1,8 @@
+# Normalize text to LF in the repository.
+* text=auto
+
+# Shell scripts must keep LF on every checkout, Windows included: the hooks run
+# them through bash, which fails on CRLF.
+*.sh text eol=lf
+
+*.png binary

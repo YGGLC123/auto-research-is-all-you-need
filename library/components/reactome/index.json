@@ -1,0 +1,21 @@
+{
+ "schema": "auto-research/component-index-v0",
+ "source": "reactome",
+ "source_name": "Reactome Icon Library",
+ "site": "https://reactome.org/icon-lib",
+ "acquisition": "manual-import",
+ "status": "not-imported",
+ "generated_at": "2026-08-25T12:51:31Z",
+ "why_not_automatic": "No public git mirror of the icon set: it is served as a browsable web gallery with per-icon downloads behind the site UI. There is nothing to clone offline, so nothing is indexed until a human imports it.",
+ "license_model": "source states CC-BY-4.0 for the collection; each imported file must still carry its own recorded license",
+ "approx_upstream_count": 1600,
+ "import_steps": [
+  "Open https://reactome.org/icon-lib and download the categories you need.",
+  "Unpack the SVGs into library/components/reactome/svg/ keeping the category folders (that path is git-ignored).",
+  "Write library/components/reactome/svg/manifest.json mapping each relative svg path to {\"license\": ..., \"author\": ..., \"source_url\": ...} copied from the download page. Anything you cannot read stays out of the manifest and is indexed as UNKNOWN rather than guessed.",
+  "Run: component_index.py index build --source dir --name reactome --repo library/components/reactome/svg"
+ ],
+ "count": 0,
+ "license_distribution": {},
+ "components": []
+}

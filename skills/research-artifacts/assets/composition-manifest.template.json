@@ -1,0 +1,120 @@
+{
+  "schema_version": "research-artifacts/composition-manifest-v1",
+  "artifact_id": "F1",
+  "mode": "both",
+  "target_editor": "drawio",
+  "native_source_paths": [
+    "research/artifacts/visual-program/component-kits/F1.drawio"
+  ],
+  "component_board_paths": [
+    "research/artifacts/visual-program/component-kits/F1.drawio"
+  ],
+  "structure_snapshot_path": "research/artifacts/visual-program/reviews/F1-structure.json",
+  "assembly_root_id": "F1.assembly",
+  "top_level_component_ids": [
+    "F1.input",
+    "F1.model",
+    "F1.output"
+  ],
+  "hierarchy": [
+    {
+      "component_id": "F1.assembly",
+      "parent_id": null,
+      "level": "assembly",
+      "native_object_ids": ["assembly-group"],
+      "reusable": false,
+      "independently_movable": true,
+      "independently_editable": true
+    },
+    {
+      "component_id": "F1.input",
+      "parent_id": "F1.assembly",
+      "level": "module",
+      "native_object_ids": ["input-group"],
+      "reusable": true,
+      "independently_movable": true,
+      "independently_editable": true
+    },
+    {
+      "component_id": "F1.input.label",
+      "parent_id": "F1.input",
+      "level": "primitive",
+      "native_object_ids": ["input-label"],
+      "reusable": false,
+      "independently_movable": true,
+      "independently_editable": true
+    },
+    {
+      "component_id": "F1.model",
+      "parent_id": "F1.assembly",
+      "level": "module",
+      "native_object_ids": ["model-group"],
+      "reusable": true,
+      "independently_movable": true,
+      "independently_editable": true
+    },
+    {
+      "component_id": "F1.model.label",
+      "parent_id": "F1.model",
+      "level": "primitive",
+      "native_object_ids": ["model-label"],
+      "reusable": false,
+      "independently_movable": true,
+      "independently_editable": true
+    },
+    {
+      "component_id": "F1.output",
+      "parent_id": "F1.assembly",
+      "level": "module",
+      "native_object_ids": ["output-group"],
+      "reusable": true,
+      "independently_movable": true,
+      "independently_editable": true
+    },
+    {
+      "component_id": "F1.output.label",
+      "parent_id": "F1.output",
+      "level": "primitive",
+      "native_object_ids": ["output-label"],
+      "reusable": false,
+      "independently_movable": true,
+      "independently_editable": true
+    }
+  ],
+  "layer_order": [
+    "background",
+    "interconnect",
+    "modules",
+    "labels",
+    "annotations"
+  ],
+  "interconnect_group_id": null,
+  "named_ports": [],
+  "flattened_assets": [],
+  "manual_edit_test": {
+    "status": "pass",
+    "editor": "drawio",
+    "operations": [
+      "ungroup-one-level",
+      "edit-text",
+      "move-component",
+      "copy-component",
+      "copy-from-component-board",
+      "reassemble",
+      "export-roundtrip"
+    ],
+    "observed_ungroup_steps_to_primitives": 2,
+    "verified_locked_elements": [
+      "module names",
+      "interface direction"
+    ],
+    "report_path": "research/artifacts/visual-program/reviews/F1-composition-qa.md",
+    "roundtrip_preview_path": "research/artifacts/visual-program/previews/F1.png",
+    "roundtrip_preview_sha256": "",
+    "edited_native_source_path": "research/artifacts/visual-program/component-kits/F1.drawio",
+    "edited_native_source_sha256": "",
+    "capture_run_id": "",
+    "completed_at": "",
+    "roundtrip_binding_sha256": ""
+  }
+}

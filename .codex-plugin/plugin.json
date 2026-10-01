@@ -1,0 +1,29 @@
+{
+  "name": "auto-research",
+  "version": "3.1.0",
+  "description": "Can you see what the AI did, and is it still your research? A stage-aware research operating system: durable .research-os state via research_os.py, capability registry with per-host provider chains, first-class blockers, gate loop-backs, autonomous loop, template-first figure routing with a versioned figure library, two-stage visual contracts, anti-amnesia index (versions / ammo depot / snapshots), a research map and a sourced taste ledger. Dual-host package shared with Claude Code.",
+  "author": {
+    "name": "YGGLC123",
+    "url": "https://github.com/YGGLC123"
+  },
+  "homepage": "https://github.com/YGGLC123/auto-research-is-all-you-need",
+  "repository": "https://github.com/YGGLC123/auto-research-is-all-you-need",
+  "license": "MIT",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "auto-research is all you need!",
+    "shortDescription": "See what the AI did to your research, and keep it yours.",
+    "longDescription": "Routes research through only the phase skills needed now. All state I/O goes through scripts/research_os.py (validate-before-write, atomic, v1-migratable). Capabilities are probed against docs/capability-registry.json per host and degrade loudly or raise blockers instead of silently skipping. The pilot enforces gate loop-backs; research-loop drives autonomous multi-tick progression with wakeups and stop conditions. A research map shows what changed since you last looked, and a taste ledger keeps your standards in your own words.",
+    "developerName": "YGGLC123",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use $auto-research:pilot to assess this project and route the next research phase.",
+      "Use $auto-research:pilot to resume this paper and close its highest-risk gap.",
+      "Use $auto-research:research-loop to advance this project autonomously with state ticks."
+    ]
+  }
+}

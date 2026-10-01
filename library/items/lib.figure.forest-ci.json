@@ -1,0 +1,109 @@
+{
+  "schema": "auto-research/library-item-v0",
+  "id": "lib:figure:forest-ci",
+  "kind": "chart-template",
+  "version": 1,
+  "purpose": "A column of point estimates with confidence intervals against a null line: coefficient plots, effect sizes, meta-analysis, robustness across specifications.",
+  "semantic_tags": [
+    "coefficient-plot",
+    "confidence-interval",
+    "meta-analysis",
+    "forest",
+    "effect-size",
+    "reference-line",
+    "robustness"
+  ],
+  "venue_tags": [
+    "nature",
+    "science",
+    "ieee",
+    "rfs",
+    "jf",
+    "aaai",
+    "neurips",
+    "generic"
+  ],
+  "renderer": "matplotlib",
+  "template_function": "forest-ci",
+  "capabilities": [
+    "renderer.matplotlib",
+    "style.scienceplots"
+  ],
+  "parameters": {
+    "aspect": 0.85,
+    "width": "single",
+    "xlabel": null,
+    "ylabel": null,
+    "title": null,
+    "panel": null,
+    "legend": false,
+    "grid": false,
+    "logx": false,
+    "logy": false,
+    "reference": 0.0,
+    "sort": false
+  },
+  "data_contract": {
+    "required_fields": [
+      {
+        "name": "label",
+        "role": "label",
+        "type": "nominal",
+        "note": "one row per level, top to bottom"
+      },
+      {
+        "name": "y",
+        "role": "y",
+        "type": "quantitative",
+        "note": "the point estimate"
+      },
+      {
+        "name": "lo",
+        "role": "lo",
+        "type": "quantitative",
+        "note": "interval lower bound"
+      },
+      {
+        "name": "hi",
+        "role": "hi",
+        "type": "quantitative",
+        "note": "interval upper bound"
+      }
+    ],
+    "optional_fields": [
+      {
+        "name": "group",
+        "role": "group",
+        "type": "nominal",
+        "note": "colours rows by family"
+      }
+    ],
+    "constraints": [
+      "lo <= y <= hi is assumed; a violated row still draws but the interval collapses",
+      "reference=null removes the null line for ratio-scaled estimates"
+    ]
+  },
+  "outputs": [
+    "pdf",
+    "svg",
+    "png",
+    "spec.vl.json"
+  ],
+  "preview": "library/previews/lib.figure.forest-ci.png",
+  "compatibility": {
+    "python": ">=3.9",
+    "matplotlib": ">=3.5",
+    "degrades_without": [
+      "style.scienceplots",
+      "colormap.cmcrameri"
+    ]
+  },
+  "quality_state": "trial",
+  "license": "MIT",
+  "attribution": "auto-research v2.9 figure library (self-authored template)",
+  "provenance": {
+    "source_url": "https://github.com/YGGLC123/auto-research-is-all-you-need",
+    "retrieved_at": "2026-08-25T00:00:00Z",
+    "note": "written for this plugin; no third-party code copied"
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "schema": "auto-research/library-item-v0",
+  "id": "lib:palette:okabe-ito",
+  "kind": "palette",
+  "version": 1,
+  "purpose": "Eight-colour qualitative palette that stays distinguishable under the three common colour-vision deficiencies and in greyscale conversion. The default categorical palette for every venue profile.",
+  "semantic_tags": [
+    "qualitative",
+    "categorical",
+    "colour-blind-safe",
+    "greyscale-safe"
+  ],
+  "venue_tags": [
+    "nature",
+    "science",
+    "ieee",
+    "rfs",
+    "jf",
+    "aaai",
+    "neurips",
+    "generic"
+  ],
+  "renderer": "any",
+  "capabilities": [],
+  "parameters": {
+    "order": "as listed",
+    "mono_fallback": [
+      "#000000",
+      "#555555",
+      "#999999",
+      "#cccccc"
+    ]
+  },
+  "colors": [
+    "#0072B2",
+    "#D55E00",
+    "#009E73",
+    "#CC79A7",
+    "#E69F00",
+    "#56B4E9",
+    "#F0E442",
+    "#000000"
+  ],
+  "color_names": [
+    "blue",
+    "vermillion",
+    "bluish green",
+    "reddish purple",
+    "orange",
+    "sky blue",
+    "yellow",
+    "black"
+  ],
+  "data_contract": {
+    "required_fields": [],
+    "optional_fields": [],
+    "constraints": [
+      "use the first N entries in order; do not reshuffle between panels of the same paper"
+    ]
+  },
+  "outputs": [
+    "hex-list"
+  ],
+  "preview": "library/previews/lib.palette.okabe-ito.png",
+  "license": "free to use (Colour Universal Design, Okabe & Ito) - no restriction stated",
+  "attribution": "Masataka Okabe and Kei Ito, 'Color Universal Design' (2008)",
+  "provenance": {
+    "source_url": "https://jfly.uni-koeln.de/color/",
+    "retrieved_at": "2026-08-25T00:00:00Z",
+    "note": "hex values transcribed from the CUD barrier-free colour set"
+  },
+  "compatibility": {
+    "applies_to": "every chart-template in this library"
+  },
+  "quality_state": "active"
+}

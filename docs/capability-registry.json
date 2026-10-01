@@ -1,0 +1,1173 @@
+{
+  "schema_version": "auto-research/capability-registry-v2",
+  "updated": "2026-10-02",
+  "note": "Machine-readable capability map. Provider chains are ordered: first reachable entry wins; a non-first hit reports 'degraded'. probe.type: command (PATH lookup, then probe.fallback_globs), skill-dir / path (filesystem; `{plugin}` = this package's own root), python-import (imports the module under the interpreter the state CLI runs in), conversation (must be verified in-session, cannot be probed offline), always (built into the host). on_missing.action: degrade (use registered fallback, record degraded), blocker (raise a state blocker, continue other work), stop (phase cannot proceed).",
+  "capabilities": [
+    {
+      "id": "local-git",
+      "need": "Local version control for durable checkpoints",
+      "phases": [
+        "bootstrap",
+        "evidence",
+        "theory",
+        "method",
+        "experiments",
+        "artifacts",
+        "manuscript",
+        "review",
+        "reproducibility",
+        "loop"
+      ],
+      "providers": {
+        "claude-code": [
+          {
+            "kind": "cli",
+            "ref": "git",
+            "probe": {
+              "type": "command",
+              "command": "git"
+            }
+          }
+        ],
+        "codex": [
+          {
+            "kind": "cli",
+            "ref": "git",
+            "probe": {
+              "type": "command",
+              "command": "git"
+            }
+          }
+        ]
+      },
+      "on_missing": {
+        "action": "stop",
+        "note": "No durable checkpointing without git; install before continuing."
+      }
+    },
+    {
+      "id": "python-env",
+      "need": "Python runtime for state CLI, plots, and experiments",
+      "phases": [
+        "bootstrap",
+        "experiments",
+        "artifacts",
+        "reproducibility",
+        "loop"
+      ],
+      "providers": {
+        "claude-code": [
+          {
+            "kind": "cli",
+            "ref": "py (Windows launcher; plain `python` may be the Store stub)",
+            "probe": {
+              "type": "command",
+              "command": "py"
+            }
+          },
+          {
+            "kind": "cli",
+            "ref": "python3",
+            "probe": {
+              "type": "command",
+              "command": "python3"
+            }
+          },
+          {
+            "kind": "cli",
+            "ref": "python",
+            "probe": {
+              "type": "command",
+              "command": "python"
+            }
+          }
+        ],
+        "codex": [
+          {
+            "kind": "cli",
+            "ref": "py (Windows launcher; plain `python` may be the Store stub)",
+            "probe": {
+              "type": "command",
+              "command": "py"
+            }
+          },
+          {
+            "kind": "cli",
+            "ref": "python3",
+            "probe": {
+              "type": "command",
+              "command": "python3"
+            }
+          },
+          {
+            "kind": "cli",
+            "ref": "python",
+            "probe": {
+              "type": "command",
+              "command": "python"
+            }
+          }
+        ]
+      },
+      "on_missing": {
+        "action": "stop",
+        "note": "The control plane itself is Python. On Windows prefer `py`: the bare `python` on PATH can be the WindowsApps stub that exits 49 with no output."
+      }
+    },
+    {
+      "id": "web-evidence",
+      "need": "Current web facts, primary sources, official documentation",
+      "phases": [
+        "discovery",
+        "evidence",
+        "review"
+      ],
+      "providers": {
+        "claude-code": [
+          {
+            "kind": "builtin",
+            "ref": "WebSearch/WebFetch",
+            "probe": {
+              "type": "always"
+            }
+          }
+        ],
+        "codex": [
+          {
+            "kind": "builtin",
+            "ref": "web",
+            "probe": {
+              "type": "always"
+            }
+          }
+        ]
+      },
+      "on_missing": {
+        "action": "blocker",
+        "note": "Evidence work without web verification must be labeled UNVERIFIED_RECOLLECTION."
+      }
+    },
+    {
+      "id": "lit-orchestration",
+      "need": "Multi-paper intake, normalized citation ledger, novelty-risk audit",
+      "phases": [
+        "evidence"
+      ],
+      "providers": {
+        "claude-code": [
+          {
+            "kind": "skill",
+            "ref": "deep-research",
+            "probe": {
+              "type": "conversation"
+            }
+          },
+          {
+            "kind": "pattern",
+            "ref": "parallel Explore agents + local evidence ledger",
+            "probe": {
+              "type": "always"
+            }
+          }
+        ],
+        "codex": [
+          {
+            "kind": "skill",
+            "ref": "$paper-lit-orchestrator",
+            "probe": {
+              "type": "skill-dir",
+              "path": "~/.codex/skills/paper-lit-orchestrator"
+            }
+          },
+          {
+            "kind": "pattern",
+            "ref": "web + normalized local ledger",
+            "probe": {
+              "type": "always"
+            }
+          }
+        ]
+      },
+      "on_missing": {
+        "action": "degrade",
+        "note": "Fall back to web search plus the four project-local ledgers."
+      }
+    },
+    {
+      "id": "citation-library",
+      "need": "Citation library and BibTeX management",
+      "phases": [
+        "evidence",
+        "manuscript",
+        "reproducibility"
+      ],
+      "providers": {
+        "claude-code": [
+          {
+            "kind": "local",
+            "ref": "project-local BibTeX/RIS ledger",
+            "probe": {
+              "type": "always"
+            }
+          }
+        ],
+        "codex": [
+          {
+            "kind": "plugin",
+            "ref": "zotero:Zotero",
+            "probe": {
+              "type": "conversation"
+            }
+          },
+          {
+            "kind": "local",
+            "ref": "project-local BibTeX/RIS ledger",
+            "probe": {
+              "type": "always"
+            }
+          }
+        ]
+      },
+      "on_missing": {
+        "action": "degrade",
+        "note": "Zotero was historically referenced but never enabled; local BibTeX is the honest default."
+      }
+    },
+    {
+      "id": "pro-consult",
+      "need": "High-reasoning external model consult for theory sieges and design red-teams: a second, independent model as an extra key",
+      "phases": [
+        "theory",
+        "review"
+      ],
+      "providers": {
+        "claude-code": [
+          {
+            "kind": "conversation",
+            "ref": "any high-reasoning model the researcher can reach (an API, a second agent family, or a chat UI the researcher drives); verify the model tier on every run",
+            "probe": {
+              "type": "conversation"
+            }
+          }
+        ],
+        "codex": [
+          {
+            "kind": "conversation",
+            "ref": "any high-reasoning model the researcher can reach (an API, a second agent family, or a chat UI the researcher drives); verify the model tier on every run",
+            "probe": {
+              "type": "conversation"
+            }
+          }
+        ]
+      },
+      "on_missing": {
+        "action": "blocker",
+        "note": "Never silently skip a requested consult: degrade to independent local subagent channels AND raise a blocker recording the missing transport."
+      }
+    },
+    {
+      "id": "playwright-pool",
+      "need": "Browser automation (optional accelerator for authenticated UI work the researcher has approved)",
+      "phases": [
+        "theory",
+        "manuscript"
+      ],
+      "providers": {
+        "claude-code": [
+          {
+            "kind": "mcp",
+            "ref": "mcp__playwright-*",
+            "probe": {
+              "type": "conversation"
+            }
+          }
+        ],
+        "codex": [
+          {
+            "kind": "plugin",
+            "ref": "browser/computer-use",
+            "probe": {
+              "type": "conversation"
+            }
+          }
+        ]
+      },
+      "on_missing": {
+        "action": "degrade",
+        "note": "Optional accelerator, never a prerequisite."
+      }
+    },
+    {
+      "id": "exact-plot",
+      "need": "Deterministic, source-grounded scientific plots (fidelity E2/G0)",
+      "phases": [
+        "artifacts"
+      ],
+      "providers": {
+        "claude-code": [
+          {
+            "kind": "pattern",
+            "ref": "matplotlib scripts via Bash + dataviz skill for design tokens",
+            "probe": {
+              "type": "command",
+              "command": "python"
+            }
+          }
+        ],
+        "codex": [
+          {
+            "kind": "skill",
+            "ref": "scientific-publication-plotter",
+            "probe": {
+              "type": "skill-dir",
+              "path": "~/.codex/skills/scientific-publication-plotter"
+            }
+          },
+          {
+            "kind": "skill",
+            "ref": "scientific-visualization",
+            "probe": {
+              "type": "skill-dir",
+              "path": "~/.codex/skills/scientific-visualization"
+            }
+          },
+          {
+            "kind": "pattern",
+            "ref": "matplotlib scripts",
+            "probe": {
+              "type": "command",
+              "command": "python"
+            }
+          }
+        ]
+      },
+      "on_missing": {
+        "action": "stop",
+        "note": "Exact numeric panels must never fall through to image generation."
+      }
+    },
+    {
+      "id": "diagram-editable",
+      "need": "Editable vector diagrams (architecture, workflow, proof maps)",
+      "phases": [
+        "artifacts",
+        "method"
+      ],
+      "providers": {
+        "claude-code": [
+          {
+            "kind": "pattern",
+            "ref": "native SVG / TikZ authored as code",
+            "probe": {
+              "type": "always"
+            }
+          }
+        ],
+        "codex": [
+          {
+            "kind": "skill",
+            "ref": "drawio",
+            "probe": {
+              "type": "skill-dir",
+              "path": "~/.codex/skills/drawio"
+            }
+          },
+          {
+            "kind": "skill",
+            "ref": "engineering-figure-agent",
+            "probe": {
+              "type": "skill-dir",
+              "path": "~/.codex/skills/engineering-figure-agent"
+            }
+          },
+          {
+            "kind": "pattern",
+            "ref": "native SVG / TikZ authored as code",
+            "probe": {
+              "type": "always"
+            }
+          }
+        ]
+      },
+      "on_missing": {
+        "action": "degrade",
+        "note": "Code-authored SVG/TikZ is always available and satisfies D1/D2 editability."
+      }
+    },
+    {
+      "id": "imagegen-conceptual",
+      "need": "Generative illustration for conceptual/G1-G2 content only",
+      "phases": [
+        "artifacts"
+      ],
+      "providers": {
+        "claude-code": [
+          {
+            "kind": "cli",
+            "ref": "Figure Studio element pipeline (figure_studio.py gen/refine; codex exec gpt-image-2 backend)",
+            "probe": {
+              "type": "command",
+              "command": "codex"
+            }
+          },
+          {
+            "kind": "pattern",
+            "ref": "hand-authored SVG illustration",
+            "probe": {
+              "type": "always"
+            }
+          }
+        ],
+        "codex": [
+          {
+            "kind": "plugin",
+            "ref": "visualize/imagegen",
+            "probe": {
+              "type": "conversation"
+            }
+          }
+        ]
+      },
+      "on_missing": {
+        "action": "degrade",
+        "note": "Conceptual panels degrade to hand-authored vector art; text stays in the vector layer; never used for exact panels."
+      }
+    },
+    {
+      "id": "figure-layout",
+      "need": "Deterministic graph layout for Figure Studio skeletons (node bboxes, orthogonal edges)",
+      "phases": [
+        "artifacts"
+      ],
+      "providers": {
+        "claude-code": [
+          {
+            "kind": "cli",
+            "ref": "Graphviz dot (PATH first, then default C:\\Program Files\\Graphviz\\bin)",
+            "probe": {
+              "type": "command",
+              "command": "dot"
+            }
+          }
+        ],
+        "codex": [
+          {
+            "kind": "cli",
+            "ref": "Graphviz dot (PATH first, then default C:\\Program Files\\Graphviz\\bin)",
+            "probe": {
+              "type": "command",
+              "command": "dot"
+            }
+          }
+        ]
+      },
+      "on_missing": {
+        "action": "degrade",
+        "note": "figure_studio.py compile still emits skeleton.dot + element prompts + QA checklist; only skeleton.svg and solver bboxes are skipped until dot is on PATH or the default install path."
+      }
+    },
+    {
+      "id": "figure-pdf-export",
+      "need": "Vector SVG to PDF export for finished figures (font embedding/outlining)",
+      "phases": [
+        "artifacts"
+      ],
+      "providers": {
+        "claude-code": [
+          {
+            "kind": "cli",
+            "ref": "Inkscape CLI (PATH first, then default C:\\Program Files\\Inkscape\\bin)",
+            "probe": {
+              "type": "command",
+              "command": "inkscape"
+            }
+          }
+        ],
+        "codex": [
+          {
+            "kind": "cli",
+            "ref": "Inkscape CLI (PATH first, then default C:\\Program Files\\Inkscape\\bin)",
+            "probe": {
+              "type": "command",
+              "command": "inkscape"
+            }
+          }
+        ]
+      },
+      "on_missing": {
+        "action": "degrade",
+        "note": "SVG is a valid deliverable; figure_studio.py assemble skips only the PDF export when Inkscape is absent (CairoSVG is not used for finals because it drops fonts)."
+      }
+    },
+    {
+      "id": "latex-toolchain",
+      "need": "LaTeX compilation and rendered-manuscript verification",
+      "phases": [
+        "manuscript",
+        "artifacts",
+        "review",
+        "reproducibility"
+      ],
+      "providers": {
+        "claude-code": [
+          {
+            "kind": "cli",
+            "ref": "latexmk",
+            "probe": {
+              "type": "command",
+              "command": "latexmk"
+            }
+          },
+          {
+            "kind": "cli",
+            "ref": "pdflatex",
+            "probe": {
+              "type": "command",
+              "command": "pdflatex"
+            }
+          }
+        ],
+        "codex": [
+          {
+            "kind": "cli",
+            "ref": "latexmk",
+            "probe": {
+              "type": "command",
+              "command": "latexmk"
+            }
+          },
+          {
+            "kind": "cli",
+            "ref": "pdflatex",
+            "probe": {
+              "type": "command",
+              "command": "pdflatex"
+            }
+          }
+        ]
+      },
+      "on_missing": {
+        "action": "blocker",
+        "note": "A manuscript that cannot be compiled locally cannot pass its integration gates."
+      }
+    },
+    {
+      "id": "pdf-tools",
+      "need": "PDF text extraction and page inspection",
+      "phases": [
+        "evidence",
+        "review",
+        "reproducibility"
+      ],
+      "providers": {
+        "claude-code": [
+          {
+            "kind": "builtin",
+            "ref": "Read tool (native PDF pages)",
+            "probe": {
+              "type": "always"
+            }
+          }
+        ],
+        "codex": [
+          {
+            "kind": "plugin",
+            "ref": "pdf:pdf",
+            "probe": {
+              "type": "conversation"
+            }
+          },
+          {
+            "kind": "cli",
+            "ref": "pdftotext",
+            "probe": {
+              "type": "command",
+              "command": "pdftotext"
+            }
+          }
+        ]
+      },
+      "on_missing": {
+        "action": "degrade",
+        "note": "python + pypdf as last resort."
+      }
+    },
+    {
+      "id": "overleaf-sync",
+      "need": "Push/pull a paper subtree to Overleaf (git bridge first; the web UI only when the bridge cannot do the job)",
+      "phases": [
+        "manuscript",
+        "reproducibility"
+      ],
+      "providers": {
+        "claude-code": [
+          {
+            "kind": "skill",
+            "ref": "overleaf-skill (git-bridge)",
+            "probe": {
+              "type": "skill-dir",
+              "path": "~/.claude/skills/overleaf-skill"
+            }
+          }
+        ],
+        "codex": [
+          {
+            "kind": "plugin",
+            "ref": "chrome:control-chrome (browser UI only when git-bridge insufficient)",
+            "probe": {
+              "type": "conversation"
+            }
+          }
+        ]
+      },
+      "on_missing": {
+        "action": "blocker",
+        "note": "Overleaf is a destination, not the canonical checkpoint; queue the sync as a blocker when the route is down."
+      }
+    },
+    {
+      "id": "github",
+      "need": "Remote repository operations (push, PR, release)",
+      "phases": [
+        "reproducibility"
+      ],
+      "providers": {
+        "claude-code": [
+          {
+            "kind": "cli",
+            "ref": "gh (authenticated)",
+            "probe": {
+              "type": "command",
+              "command": "gh"
+            }
+          }
+        ],
+        "codex": [
+          {
+            "kind": "cli",
+            "ref": "gh",
+            "probe": {
+              "type": "command",
+              "command": "gh"
+            }
+          }
+        ]
+      },
+      "on_missing": {
+        "action": "degrade",
+        "note": "Local commits remain the durable default; remote sync queues as a blocker only when explicitly in scope."
+      }
+    },
+    {
+      "id": "drive-sync",
+      "need": "Drive-hosted inputs and confirmed final-artifact uploads",
+      "phases": [
+        "reproducibility"
+      ],
+      "providers": {
+        "claude-code": [
+          {
+            "kind": "mcp",
+            "ref": "Google Drive connector (claude.ai MCP)",
+            "probe": {
+              "type": "conversation"
+            }
+          }
+        ],
+        "codex": [
+          {
+            "kind": "cli",
+            "ref": "rclone",
+            "probe": {
+              "type": "command",
+              "command": "rclone"
+            }
+          }
+        ]
+      },
+      "on_missing": {
+        "action": "blocker",
+        "note": "Every upload needs per-action confirmation anyway; a missing route becomes a queued blocker, never a silent skip."
+      }
+    },
+    {
+      "id": "review-panel",
+      "need": "Independent multi-agent cold review of a manuscript",
+      "phases": [
+        "review"
+      ],
+      "providers": {
+        "claude-code": [
+          {
+            "kind": "skill",
+            "ref": "review-paper / review-paper-light",
+            "probe": {
+              "type": "skill-dir",
+              "path": "~/.claude/skills/review-paper"
+            }
+          },
+          {
+            "kind": "pattern",
+            "ref": "independent local subagents with cold-review prompts",
+            "probe": {
+              "type": "always"
+            }
+          }
+        ],
+        "codex": [
+          {
+            "kind": "pattern",
+            "ref": "independent local subagents with cold-review prompts",
+            "probe": {
+              "type": "always"
+            }
+          }
+        ]
+      },
+      "on_missing": {
+        "action": "degrade",
+        "note": "Cold review must still be fresh-context and evidence-bound."
+      }
+    },
+    {
+      "id": "compute-server",
+      "need": "Long or wide computation (>30 min or >8 workers) on a compute host you control",
+      "phases": [
+        "experiments"
+      ],
+      "providers": {
+        "claude-code": [
+          {
+            "kind": "cli",
+            "ref": "ssh to your own compute host (register the run first; tmux; checkpointed)",
+            "probe": {
+              "type": "command",
+              "command": "ssh"
+            }
+          }
+        ],
+        "codex": [
+          {
+            "kind": "cli",
+            "ref": "ssh to your own compute host (register the run first; tmux; checkpointed)",
+            "probe": {
+              "type": "command",
+              "command": "ssh"
+            }
+          }
+        ]
+      },
+      "on_missing": {
+        "action": "degrade",
+        "note": "Run locally with worker budget min(free_cores-2, 8) and flag the capacity limit in state."
+      }
+    },
+    {
+      "id": "cross-host-exec",
+      "need": "Invoke the other host headlessly for bounded mechanical jobs (collab direct lane)",
+      "phases": [
+        "collab",
+        "artifacts",
+        "experiments"
+      ],
+      "providers": {
+        "claude-code": [
+          {
+            "kind": "cli",
+            "ref": "codex exec (strip CLAUDE* env, AR_HOST=codex, --skip-git-repo-check, stdin closed; K task booked first)",
+            "probe": {
+              "type": "command",
+              "command": "codex"
+            }
+          }
+        ],
+        "codex": [
+          {
+            "kind": "cli",
+            "ref": "claude -p (K task booked first)",
+            "probe": {
+              "type": "command",
+              "command": "claude",
+              "fallback_globs": [
+                "%USERPROFILE%/.vscode/extensions/anthropic.claude-code-*/resources/native-binary/claude.exe"
+              ]
+            }
+          }
+        ]
+      },
+      "on_missing": {
+        "action": "degrade",
+        "note": "Fast lane unavailable => everything goes through the mailbox lane; collaboration never depends on direct exec."
+      }
+    },
+    {
+      "id": "pro-refine",
+      "need": "Gated manuscript refinement by an external high-reasoning model",
+      "phases": [
+        "manuscript"
+      ],
+      "providers": {
+        "claude-code": [
+          {
+            "kind": "conversation",
+            "ref": "any high-reasoning model the researcher can reach (an API, a second agent family, or a chat UI the researcher drives); verify the model tier on every run (user-accepted only)",
+            "probe": {
+              "type": "conversation"
+            }
+          }
+        ],
+        "codex": [
+          {
+            "kind": "conversation",
+            "ref": "any high-reasoning model the researcher can reach (an API, a second agent family, or a chat UI the researcher drives); verify the model tier on every run (user-accepted only)",
+            "probe": {
+              "type": "conversation"
+            }
+          }
+        ]
+      },
+      "on_missing": {
+        "action": "degrade",
+        "note": "Refinement falls back to the local review/manuscript loop; external-model assistance always requires user acceptance."
+      }
+    },
+    {
+      "id": "prose-drafting",
+      "need": "Drafting prose a human will read end to end: manuscript sections, reports, briefing documents, talk scripts. The running model drafts by default; a researcher who prefers another writer model puts its CLI first in this chain.",
+      "phases": [
+        "manuscript",
+        "review",
+        "artifacts",
+        "loop"
+      ],
+      "providers": {
+        "claude-code": [
+          {
+            "kind": "builtin",
+            "ref": "the running model (in-session)",
+            "probe": {
+              "type": "always"
+            }
+          }
+        ],
+        "codex": [
+          {
+            "kind": "builtin",
+            "ref": "the running model (in-session)",
+            "probe": {
+              "type": "always"
+            }
+          }
+        ]
+      },
+      "on_missing": {
+        "action": "degrade",
+        "note": "Draft in-session with the running model and record the degradation; never silently substitute a different writer."
+      }
+    },
+    {
+      "id": "renderer.matplotlib",
+      "need": "Route A deterministic chart rendering: every chart-template in library/items is a matplotlib function, and exact numeric panels must never fall through to image generation",
+      "phases": [
+        "artifacts",
+        "manuscript",
+        "review",
+        "loop"
+      ],
+      "providers": {
+        "claude-code": [
+          {
+            "kind": "python-package",
+            "ref": "matplotlib",
+            "probe": {
+              "type": "python-import",
+              "module": "matplotlib"
+            }
+          }
+        ],
+        "codex": [
+          {
+            "kind": "python-package",
+            "ref": "matplotlib",
+            "probe": {
+              "type": "python-import",
+              "module": "matplotlib"
+            }
+          }
+        ]
+      },
+      "on_missing": {
+        "action": "blocker",
+        "note": "Route A is unavailable without matplotlib: raise a capability blocker with the queued render, keep Route B/C work moving, and never substitute a generated image for an exact numeric panel. Install with `py -m pip install matplotlib`."
+      }
+    },
+    {
+      "id": "style.scienceplots",
+      "need": "Journal style stack for Route A (venue profile style_stack, e.g. ['science','nature'])",
+      "phases": [
+        "artifacts",
+        "manuscript",
+        "loop"
+      ],
+      "providers": {
+        "claude-code": [
+          {
+            "kind": "python-package",
+            "ref": "scienceplots",
+            "probe": {
+              "type": "python-import",
+              "module": "scienceplots"
+            }
+          }
+        ],
+        "codex": [
+          {
+            "kind": "python-package",
+            "ref": "scienceplots",
+            "probe": {
+              "type": "python-import",
+              "module": "scienceplots"
+            }
+          }
+        ]
+      },
+      "on_missing": {
+        "action": "degrade",
+        "note": "Fall back to the built-in approximate style in figure_templates and record `degraded` in the figure's provenance -- the paper trail must show the plot did not use the journal style stack."
+      }
+    },
+    {
+      "id": "colormap.cmcrameri",
+      "need": "Perceptually uniform, colour-vision-safe scientific colormaps (venue profile `colormap`, e.g. cmc.batlow)",
+      "phases": [
+        "artifacts",
+        "manuscript",
+        "loop"
+      ],
+      "providers": {
+        "claude-code": [
+          {
+            "kind": "python-package",
+            "ref": "cmcrameri",
+            "probe": {
+              "type": "python-import",
+              "module": "cmcrameri"
+            }
+          }
+        ],
+        "codex": [
+          {
+            "kind": "python-package",
+            "ref": "cmcrameri",
+            "probe": {
+              "type": "python-import",
+              "module": "cmcrameri"
+            }
+          }
+        ]
+      },
+      "on_missing": {
+        "action": "degrade",
+        "note": "Fall back to the registered palette's hex list (okabe-ito) and record `degraded`; a continuous field rendered on a categorical palette must be flagged in QA, not shipped silently."
+      }
+    },
+    {
+      "id": "renderer.vegalite",
+      "need": "Optional Vega-Lite export of a Route A chart (`--emit-vegalite`); the spec is always written, rendering it needs a converter",
+      "phases": [
+        "artifacts",
+        "loop"
+      ],
+      "providers": {
+        "claude-code": [
+          {
+            "kind": "cli",
+            "ref": "vl-convert",
+            "probe": {
+              "type": "command",
+              "command": "vl-convert"
+            }
+          },
+          {
+            "kind": "python-package",
+            "ref": "vl_convert (vl-convert-python)",
+            "probe": {
+              "type": "python-import",
+              "module": "vl_convert"
+            }
+          }
+        ],
+        "codex": [
+          {
+            "kind": "cli",
+            "ref": "vl-convert",
+            "probe": {
+              "type": "command",
+              "command": "vl-convert"
+            }
+          },
+          {
+            "kind": "python-package",
+            "ref": "vl_convert (vl-convert-python)",
+            "probe": {
+              "type": "python-import",
+              "module": "vl_convert"
+            }
+          }
+        ]
+      },
+      "on_missing": {
+        "action": "degrade",
+        "note": "Write `spec.vl.json` and stop there: the spec is the portable artifact and matplotlib remains the rendering backend. Record that no Vega-Lite raster/vector was produced."
+      }
+    },
+    {
+      "id": "component.bioicons",
+      "need": "Route B component assembly: the local, license-aware Bioicons index that `component_index.py` searches and assembles from",
+      "phases": [
+        "artifacts",
+        "loop"
+      ],
+      "providers": {
+        "claude-code": [
+          {
+            "kind": "data",
+            "ref": "this plugin component index",
+            "probe": {
+              "type": "path",
+              "path": "{plugin}/library/components/bioicons/assets_ok"
+            }
+          }
+        ],
+        "codex": [
+          {
+            "kind": "data",
+            "ref": "this plugin component index",
+            "probe": {
+              "type": "path",
+              "path": "{plugin}/library/components/bioicons/assets_ok"
+            }
+          }
+        ]
+      },
+      "on_missing": {
+        "action": "degrade",
+        "note": "Rebuild it -- `py scripts/component_index.py index build --source bioicons` clones upstream and writes the index in one step. Until then Route B falls back to self-authored SVG primitives; record the degradation."
+      },
+      "notes": {
+        "svg_bodies_are_gitignored": "index.json is tracked, `repo/` is not; a fresh checkout must run the build before `assemble`.",
+        "license_discipline": "Every row carries a license transcribed from upstream; UNKNOWN blocks shipping until resolved."
+      }
+    },
+    {
+      "id": "dsl.plotneuralnet",
+      "need": "Route B specialised DSL for neural-network architecture diagrams (LaTeX/TikZ generator, first choice before generic component assembly)",
+      "phases": [
+        "artifacts"
+      ],
+      "requires": [
+        "latex-toolchain"
+      ],
+      "providers": {
+        "claude-code": [
+          {
+            "kind": "repo",
+            "ref": "PlotNeuralNet checkout",
+            "probe": {
+              "type": "path",
+              "path": "~/plugins/PlotNeuralNet/pycore"
+            }
+          },
+          {
+            "kind": "repo",
+            "ref": "PlotNeuralNet checkout (tools)",
+            "probe": {
+              "type": "path",
+              "path": "~/tools/PlotNeuralNet/pycore"
+            }
+          },
+          {
+            "kind": "repo",
+            "ref": "PlotNeuralNet checkout (plugin-local)",
+            "probe": {
+              "type": "path",
+              "path": "{plugin}/library/components/plotneuralnet/repo/pycore"
+            }
+          }
+        ],
+        "codex": [
+          {
+            "kind": "repo",
+            "ref": "PlotNeuralNet checkout",
+            "probe": {
+              "type": "path",
+              "path": "~/plugins/PlotNeuralNet/pycore"
+            }
+          },
+          {
+            "kind": "repo",
+            "ref": "PlotNeuralNet checkout (tools)",
+            "probe": {
+              "type": "path",
+              "path": "~/tools/PlotNeuralNet/pycore"
+            }
+          }
+        ]
+      },
+      "on_missing": {
+        "action": "degrade",
+        "note": "Assemble the architecture from the component library instead (`component_index.py assemble --template architecture-stack`) and record the degradation. Even when present this capability is unusable without `latex-toolchain`: probe both before routing an architecture figure here. Install: `git clone https://github.com/HarisIqbal88/PlotNeuralNet ~/plugins/PlotNeuralNet` (MIT)."
+      }
+    },
+    {
+      "id": "qa.scipilot",
+      "need": "Optional rendered-figure visual self-check merged into the light QA read-out (figure-engineering contract section 7)",
+      "phases": [
+        "artifacts",
+        "review"
+      ],
+      "providers": {
+        "claude-code": [
+          {
+            "kind": "skill",
+            "ref": "scipilot-figure-skill",
+            "probe": {
+              "type": "skill-dir",
+              "path": "~/.claude/skills/scipilot-figure-skill"
+            }
+          },
+          {
+            "kind": "skill",
+            "ref": "scipilot",
+            "probe": {
+              "type": "skill-dir",
+              "path": "~/.claude/skills/scipilot"
+            }
+          }
+        ],
+        "codex": [
+          {
+            "kind": "skill",
+            "ref": "scipilot-figure-skill",
+            "probe": {
+              "type": "skill-dir",
+              "path": "~/.codex/skills/scipilot-figure-skill"
+            }
+          },
+          {
+            "kind": "skill",
+            "ref": "scipilot",
+            "probe": {
+              "type": "skill-dir",
+              "path": "~/.codex/skills/scipilot"
+            }
+          }
+        ]
+      },
+      "on_missing": {
+        "action": "degrade",
+        "note": "The mechanical QA checks (artifact exists, venue width, embedded fonts, text overflow, missing values, attribution completeness) still run and still gate nothing -- they only report. Record that no visual self-check was merged into qa.json."
+      }
+    }
+  ]
+}

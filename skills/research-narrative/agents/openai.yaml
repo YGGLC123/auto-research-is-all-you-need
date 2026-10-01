@@ -1,0 +1,7 @@
+interface:
+  display_name: "Research Narrative"
+  short_description: "Version, inspect, and steer the narrative tree"
+  default_prompt: "Use $auto-research:research-narrative to show this project's narrative trajectory and record this turn's narrative disposition."
+
+policy:
+  allow_implicit_invocation: false

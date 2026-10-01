@@ -1,0 +1,30 @@
+{
+  "schema_version": "research-artifacts/figure-program-v1",
+  "request_id": "",
+  "version": 1,
+  "created_at": "",
+  "updated_at": "",
+  "supersedes": null,
+  "owner_phase": "research-manuscript",
+  "paper": {
+    "title": "",
+    "project_root": "",
+    "stage": "manuscript_draft",
+    "paper_type": "empirical_ml",
+    "target_venue": "",
+    "manuscript_paths": [],
+    "claim_evidence_map_paths": []
+  },
+  "phase_1": {
+    "status": "draft",
+    "stage_2_prompt_path": "research/artifacts/visual-program/stage-2-prompt.md",
+    "freeze_record_path": "research/artifacts/visual-program/freeze.json",
+    "frozen_at": null,
+    "prompt_sha256": null,
+    "change_policy": "new_version_on_semantic_change"
+  },
+  "visual_system_path": "research/artifacts/visual-program/visual-system.md",
+  "figure_spec_dir": "research/artifacts/visual-program/figure-specs",
+  "delivery_manifest_path": "research/artifacts/visual-program/delivery-manifest.json",
+  "figures": []
+}

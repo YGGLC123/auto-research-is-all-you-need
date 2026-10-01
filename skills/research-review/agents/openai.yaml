@@ -1,0 +1,7 @@
+interface:
+  display_name: "Research Review"
+  short_description: "Cold-review, rescue, revise, or rebut a paper"
+  default_prompt: "Use $auto-research:research-review to cold-review this paper and plan the revision."
+
+policy:
+  allow_implicit_invocation: false

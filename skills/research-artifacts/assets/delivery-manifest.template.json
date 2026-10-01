@@ -1,0 +1,19 @@
+{
+  "schema_version": "research-artifacts/delivery-manifest-v1",
+  "request_id": "",
+  "version": 0,
+  "program_sha256": "",
+  "prompt_sha256": "",
+  "status": "draft",
+  "created_at": "",
+  "updated_at": "",
+  "producer_id": "",
+  "delivery_lock_path": "research/artifacts/visual-program/delivery-lock.json",
+  "figures": [],
+  "manuscript_integration": {
+    "status": "pending",
+    "manuscript_path": "",
+    "rendered_path": "",
+    "qa_report_path": ""
+  }
+}

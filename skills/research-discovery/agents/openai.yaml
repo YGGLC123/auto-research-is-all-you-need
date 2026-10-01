@@ -1,0 +1,7 @@
+interface:
+  display_name: "Research Discovery"
+  short_description: "Design a falsifiable, differentiated research problem"
+  default_prompt: "Use $auto-research:research-discovery to turn this topic or evidence into a falsifiable, differentiated research problem."
+
+policy:
+  allow_implicit_invocation: false

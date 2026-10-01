@@ -1,0 +1,45 @@
+{
+  "schema": "auto-research/venue-profile-v1",
+  "id": "ieee",
+  "name": "IEEE Transactions / Conference",
+  "version": 1,
+  "venue_hash": "a9616773cf62f665",
+  "renderer_preference": [
+    "matplotlib"
+  ],
+  "style_stack": [
+    "science",
+    "ieee",
+    "no-latex"
+  ],
+  "figure_width_mm": {
+    "single": 88.9,
+    "double": 181
+  },
+  "max_height_mm": 235,
+  "font": {
+    "family": "serif",
+    "stack": [
+      "Times New Roman",
+      "Times",
+      "DejaVu Serif"
+    ],
+    "size_pt": 8
+  },
+  "palette": "lib:palette:okabe-ito@1",
+  "colormap": "cmc.batlow",
+  "panel_label": "(a)",
+  "vector": true,
+  "dpi": 600,
+  "export": [
+    "pdf",
+    "svg",
+    "png"
+  ],
+  "capabilities": [
+    "renderer.matplotlib",
+    "style.scienceplots",
+    "colormap.cmcrameri"
+  ],
+  "notes": "IEEE two-column: 3.5 in single / 7.16 in double; the scienceplots ieee style already narrows line widths."
+}

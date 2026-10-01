@@ -1,0 +1,92 @@
+{
+  "schema": "auto-research/library-item-v0",
+  "id": "lib:diagram:architecture-stack",
+  "kind": "diagram-template",
+  "version": 1,
+  "purpose": "A vertical stack of layers or modules with optional side annotations: system architecture, model stack, protocol layers. Schema and slots only in this track.",
+  "semantic_tags": [
+    "architecture",
+    "layer-stack",
+    "system-diagram",
+    "module-stack",
+    "block-diagram",
+    "model-architecture"
+  ],
+  "venue_tags": [
+    "nature",
+    "science",
+    "ieee",
+    "rfs",
+    "jf",
+    "aaai",
+    "neurips",
+    "generic"
+  ],
+  "renderer": "component-assembly",
+  "capabilities": [
+    "component.bioicons"
+  ],
+  "parameters": {
+    "layer_gap_mm": 1.5,
+    "annotation_side": "right",
+    "corner_radius_mm": 1.0,
+    "width": "single",
+    "aspect": 1.15
+  },
+  "slots": {
+    "layers": {
+      "type": "list",
+      "of": "slot",
+      "min": 2,
+      "max": 10,
+      "slot_fields": [
+        "id",
+        "label",
+        "detail",
+        "height_weight",
+        "fill"
+      ]
+    },
+    "annotations": {
+      "type": "list",
+      "of": "callout",
+      "optional": true,
+      "callout_fields": [
+        "target",
+        "text",
+        "side"
+      ]
+    },
+    "io": {
+      "type": "dict",
+      "optional": true,
+      "note": "{top: label, bottom: label} for the stack's input and output"
+    }
+  },
+  "data_contract": {
+    "required_fields": [],
+    "optional_fields": [],
+    "constraints": [
+      "no tabular data: geometry comes from slots, not from a data file"
+    ]
+  },
+  "outputs": [
+    "svg",
+    "pdf",
+    "png"
+  ],
+  "preview": "library/previews/lib.diagram.architecture-stack.png",
+  "compatibility": {
+    "assembled_by": "scripts/component_index.py (track X2)",
+    "router": "figure_router.py routes matching requests to Route B"
+  },
+  "quality_state": "draft",
+  "notes": "height_weight lets one layer dominate (e.g. the contributed module) without hand-tuning millimetres.",
+  "license": "MIT",
+  "attribution": "auto-research v2.9 figure library (self-authored template)",
+  "provenance": {
+    "source_url": "https://github.com/YGGLC123/auto-research-is-all-you-need",
+    "retrieved_at": "2026-08-25T00:00:00Z",
+    "note": "written for this plugin; no third-party code copied"
+  }
+}

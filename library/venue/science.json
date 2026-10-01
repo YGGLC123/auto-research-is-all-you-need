@@ -1,0 +1,45 @@
+{
+  "schema": "auto-research/venue-profile-v1",
+  "id": "science",
+  "name": "Science / AAAS",
+  "version": 1,
+  "venue_hash": "c2d629e773e06a69",
+  "renderer_preference": [
+    "matplotlib"
+  ],
+  "style_stack": [
+    "science",
+    "no-latex"
+  ],
+  "figure_width_mm": {
+    "single": 55,
+    "double": 115,
+    "full": 183
+  },
+  "max_height_mm": 240,
+  "font": {
+    "family": "sans-serif",
+    "stack": [
+      "Helvetica",
+      "Arial",
+      "DejaVu Sans"
+    ],
+    "size_pt": 7
+  },
+  "palette": "lib:palette:okabe-ito@1",
+  "colormap": "cmc.batlow",
+  "panel_label": "A",
+  "vector": true,
+  "dpi": 600,
+  "export": [
+    "pdf",
+    "svg",
+    "png"
+  ],
+  "capabilities": [
+    "renderer.matplotlib",
+    "style.scienceplots",
+    "colormap.cmcrameri"
+  ],
+  "notes": "Science uses a three-width grid (1/2/3 columns: 55/115/183 mm) and uppercase panel letters."
+}

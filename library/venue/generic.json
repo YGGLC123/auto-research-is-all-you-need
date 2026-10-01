@@ -1,0 +1,44 @@
+{
+  "schema": "auto-research/venue-profile-v1",
+  "id": "generic",
+  "name": "Generic / venue not yet chosen",
+  "version": 1,
+  "venue_hash": "0880bba013215002",
+  "renderer_preference": [
+    "matplotlib"
+  ],
+  "style_stack": [
+    "science",
+    "no-latex"
+  ],
+  "figure_width_mm": {
+    "single": 89,
+    "double": 180
+  },
+  "max_height_mm": 240,
+  "font": {
+    "family": "sans-serif",
+    "stack": [
+      "Helvetica",
+      "Arial",
+      "DejaVu Sans"
+    ],
+    "size_pt": 8
+  },
+  "palette": "lib:palette:okabe-ito@1",
+  "colormap": "cmc.batlow",
+  "panel_label": "a",
+  "vector": true,
+  "dpi": 600,
+  "export": [
+    "pdf",
+    "svg",
+    "png"
+  ],
+  "capabilities": [
+    "renderer.matplotlib",
+    "style.scienceplots",
+    "colormap.cmcrameri"
+  ],
+  "notes": "Neutral default: safe two-column widths, sans-serif, colour-blind-safe palette. Rebase once the venue is fixed."
+}

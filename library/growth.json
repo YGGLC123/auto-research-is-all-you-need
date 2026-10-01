@@ -1,0 +1,197 @@
+{
+  "schema_version": "auto-research/growth-v1",
+  "entries": {
+    "win-python-stub": {
+      "id": "win-python-stub",
+      "kind": "fix",
+      "title": "Bare 'python' on Windows can be the Store stub (exit 49, silent) — invoke 'py' first",
+      "file": "fixes/win-python-stub.md",
+      "status": "active",
+      "phases": [
+        "bootstrap",
+        "experiments"
+      ],
+      "helpful": 2,
+      "harmful": 0,
+      "provenance": [
+        {
+          "project": "auto-research-v2-rebuild",
+          "node": "build-P0",
+          "evidence": "smoke exit 49; registry python-env chain",
+          "ts": "2026-07-17T18:15:47Z"
+        }
+      ],
+      "created_at": "2026-07-17T18:15:47Z",
+      "status_changed_at": "2026-07-17T18:15:47Z",
+      "quality_gate": "used-twice",
+      "quality_gate_note": "validated repeatedly during the v2 rebuild",
+      "status_reason": "auto: trial passed usage threshold",
+      "uses": [
+        {
+          "ts": "2026-07-17T18:15:47Z",
+          "verdict": "helpful",
+          "note": "applied in P1 build",
+          "project": "",
+          "node": ""
+        },
+        {
+          "ts": "2026-07-17T18:15:47Z",
+          "verdict": "helpful",
+          "note": "applied in P1 tests",
+          "project": "",
+          "node": ""
+        }
+      ]
+    },
+    "subprocess-utf8": {
+      "id": "subprocess-utf8",
+      "kind": "fix",
+      "title": "subprocess.run(text=True) on Windows decodes GBK and crashes on UTF-8 child output",
+      "file": "fixes/subprocess-utf8.md",
+      "status": "active",
+      "phases": [
+        "experiments",
+        "reproducibility"
+      ],
+      "helpful": 2,
+      "harmful": 0,
+      "provenance": [
+        {
+          "project": "auto-research-v2-rebuild",
+          "node": "build-P0",
+          "evidence": "doctor UnicodeDecodeError + fix commit",
+          "ts": "2026-07-17T18:15:47Z"
+        }
+      ],
+      "created_at": "2026-07-17T18:15:47Z",
+      "status_changed_at": "2026-07-17T18:15:48Z",
+      "quality_gate": "used-twice",
+      "quality_gate_note": "validated repeatedly during the v2 rebuild",
+      "status_reason": "auto: trial passed usage threshold",
+      "uses": [
+        {
+          "ts": "2026-07-17T18:15:48Z",
+          "verdict": "helpful",
+          "note": "applied in P1 build",
+          "project": "",
+          "node": ""
+        },
+        {
+          "ts": "2026-07-17T18:15:48Z",
+          "verdict": "helpful",
+          "note": "applied in P1 tests",
+          "project": "",
+          "node": ""
+        }
+      ]
+    },
+    "real-data-regression": {
+      "id": "real-data-regression",
+      "kind": "playbook",
+      "title": "Freeze no schema before regressing it against every real-world instance",
+      "file": "playbooks/real-data-regression.md",
+      "status": "active",
+      "phases": [
+        "experiments",
+        "method"
+      ],
+      "helpful": 2,
+      "harmful": 0,
+      "provenance": [
+        {
+          "project": "auto-research-v2-rebuild",
+          "node": "build-P0",
+          "evidence": "19/19 real states: 2 schema strings, free-form stages, missing fields; 6 bugs fixed pre-freeze",
+          "ts": "2026-07-17T18:15:47Z"
+        }
+      ],
+      "created_at": "2026-07-17T18:15:47Z",
+      "status_changed_at": "2026-07-17T18:15:48Z",
+      "quality_gate": "used-twice",
+      "quality_gate_note": "validated repeatedly during the v2 rebuild",
+      "status_reason": "auto: trial passed usage threshold",
+      "uses": [
+        {
+          "ts": "2026-07-17T18:15:48Z",
+          "verdict": "helpful",
+          "note": "applied in P1 build",
+          "project": "",
+          "node": ""
+        },
+        {
+          "ts": "2026-07-17T18:15:48Z",
+          "verdict": "helpful",
+          "note": "applied in P1 tests",
+          "project": "",
+          "node": ""
+        }
+      ]
+    },
+    "fanout-hard-template": {
+      "id": "fanout-hard-template",
+      "kind": "playbook",
+      "title": "Fan out parallel writer agents only with a hard conventions template plus a mechanical linter",
+      "file": "playbooks/fanout-hard-template.md",
+      "status": "active",
+      "phases": [
+        "loop",
+        "method"
+      ],
+      "helpful": 2,
+      "harmful": 0,
+      "provenance": [
+        {
+          "project": "auto-research-v2-rebuild",
+          "node": "build-P0",
+          "evidence": "4-agent rewrite, 0 broken links via template+linter",
+          "ts": "2026-07-17T18:15:47Z"
+        }
+      ],
+      "created_at": "2026-07-17T18:15:47Z",
+      "status_changed_at": "2026-07-17T18:15:48Z",
+      "quality_gate": "used-twice",
+      "quality_gate_note": "validated repeatedly during the v2 rebuild",
+      "status_reason": "auto: trial passed usage threshold",
+      "uses": [
+        {
+          "ts": "2026-07-17T18:15:48Z",
+          "verdict": "helpful",
+          "note": "applied in P1 build",
+          "project": "",
+          "node": ""
+        },
+        {
+          "ts": "2026-07-17T18:15:48Z",
+          "verdict": "helpful",
+          "note": "applied in P1 tests",
+          "project": "",
+          "node": ""
+        }
+      ]
+    },
+    "narrative-internal-ledger": {
+      "id": "narrative-internal-ledger",
+      "kind": "playbook",
+      "title": "Pair every reader-facing narrative with an internal binding ledger and a TODO file",
+      "file": "playbooks/narrative-internal-ledger.md",
+      "status": "trial",
+      "phases": [
+        "manuscript"
+      ],
+      "helpful": 0,
+      "harmful": 0,
+      "provenance": [
+        {
+          "project": "reference-project",
+          "node": "narrative-rebuild-0811",
+          "evidence": "narrative tree v1.0: verifier recomputation caught an unstated weighting; a second-family restatement of every number showed zero drift",
+          "ts": "2026-08-11T10:32:15Z"
+        }
+      ],
+      "created_at": "2026-08-11T10:32:15Z",
+      "status_changed_at": "2026-08-11T10:33:04Z",
+      "quality_gate": "user-confirmed",
+      "status_reason": "gate=user-confirmed"
+    }
+  }
+}

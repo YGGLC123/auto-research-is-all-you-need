@@ -1,0 +1,96 @@
+{
+  "schema": "auto-research/library-item-v0",
+  "id": "lib:diagram:pipeline-lr",
+  "kind": "diagram-template",
+  "version": 1,
+  "purpose": "A left-to-right sequence of stages with labelled arrows: data flow, method pipeline, protocol steps. Registered here as schema and slots only; assembly is the component track's job.",
+  "semantic_tags": [
+    "pipeline",
+    "workflow",
+    "data-flow",
+    "stage-sequence",
+    "process",
+    "left-to-right",
+    "method-overview"
+  ],
+  "venue_tags": [
+    "nature",
+    "science",
+    "ieee",
+    "rfs",
+    "jf",
+    "aaai",
+    "neurips",
+    "generic"
+  ],
+  "renderer": "component-assembly",
+  "capabilities": [
+    "component.bioicons"
+  ],
+  "parameters": {
+    "stage_gap_mm": 6,
+    "corner_radius_mm": 1.2,
+    "arrow_style": "solid",
+    "label_position": "below",
+    "width": "double",
+    "aspect": 0.3
+  },
+  "slots": {
+    "stages": {
+      "type": "list",
+      "of": "slot",
+      "min": 2,
+      "max": 8,
+      "slot_fields": [
+        "id",
+        "label",
+        "icon",
+        "sublabel",
+        "emphasis"
+      ]
+    },
+    "arrows": {
+      "type": "list",
+      "of": "edge",
+      "edge_fields": [
+        "from",
+        "to",
+        "label",
+        "style"
+      ],
+      "default": "consecutive stages"
+    },
+    "lanes": {
+      "type": "list",
+      "of": "string",
+      "optional": true,
+      "note": "optional swimlane titles stacked vertically"
+    }
+  },
+  "data_contract": {
+    "required_fields": [],
+    "optional_fields": [],
+    "constraints": [
+      "no tabular data: geometry comes from slots, not from a data file"
+    ]
+  },
+  "outputs": [
+    "svg",
+    "pdf",
+    "png"
+  ],
+  "preview": "library/previews/lib.diagram.pipeline-lr.png",
+  "compatibility": {
+    "assembled_by": "scripts/component_index.py (track X2)",
+    "router": "figure_router.py routes matching requests to Route B"
+  },
+  "quality_state": "draft",
+  "notes": "Slot ids are referenced by `figure assemble --slots <id>=<component-ref>`; an unfilled slot renders as an outlined placeholder rather than silently vanishing.",
+  "license": "MIT",
+  "attribution": "auto-research v2.9 figure library (self-authored template)",
+  "provenance": {
+    "source_url": "https://github.com/YGGLC123/auto-research-is-all-you-need",
+    "retrieved_at": "2026-08-25T00:00:00Z",
+    "note": "written for this plugin; no third-party code copied"
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "schema": "auto-research/library-item-v0",
+  "id": "lib:palette:cmc-batlow",
+  "kind": "palette",
+  "version": 1,
+  "purpose": "Perceptually uniform sequential colour map for continuous fields (heatmaps, surfaces). Referenced by venue profiles as `cmc.batlow`; the hex list below is the fallback when cmcrameri is not installed.",
+  "semantic_tags": [
+    "sequential",
+    "continuous",
+    "perceptually-uniform",
+    "colour-blind-safe",
+    "colormap"
+  ],
+  "venue_tags": [
+    "nature",
+    "science",
+    "ieee",
+    "rfs",
+    "jf",
+    "aaai",
+    "neurips",
+    "generic"
+  ],
+  "renderer": "matplotlib",
+  "capabilities": [
+    "colormap.cmcrameri"
+  ],
+  "parameters": {
+    "colormap": "cmc.batlow",
+    "fallback_colormap": "viridis",
+    "reverse": false
+  },
+  "colors": [
+    "#011959",
+    "#12454F",
+    "#4D6939",
+    "#9E8438",
+    "#E19E68",
+    "#FBA7AC",
+    "#FACCFA"
+  ],
+  "data_contract": {
+    "required_fields": [],
+    "optional_fields": [],
+    "constraints": [
+      "sequential only - do not use for unordered categories; pair with a labelled colour bar"
+    ]
+  },
+  "outputs": [
+    "matplotlib-colormap",
+    "hex-list"
+  ],
+  "preview": "library/previews/lib.palette.cmc-batlow.png",
+  "license": "MIT (Scientific colour maps, F. Crameri)",
+  "attribution": "Fabio Crameri, Scientific colour maps (batlow), DOI 10.5281/zenodo.1243862",
+  "provenance": {
+    "source_url": "https://www.fabiocrameri.ch/colourmaps/",
+    "retrieved_at": "2026-08-25T00:00:00Z",
+    "note": "installed via the cmcrameri PyPI package; hex fallback sampled at seven evenly spaced stops"
+  },
+  "compatibility": {
+    "degrades_without": [
+      "colormap.cmcrameri"
+    ],
+    "degraded_to": "matplotlib viridis"
+  },
+  "quality_state": "active"
+}

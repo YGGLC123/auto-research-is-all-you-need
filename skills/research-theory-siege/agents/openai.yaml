@@ -1,0 +1,7 @@
+interface:
+  display_name: "Research Theory Siege"
+  short_description: "Attack formal claims with adversarial checks"
+  default_prompt: "Use $auto-research:research-theory-siege to settle this formal claim with counterexamples, proof attempts, and independent verification."
+
+policy:
+  allow_implicit_invocation: false

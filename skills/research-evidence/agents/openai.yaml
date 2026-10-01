@@ -1,0 +1,7 @@
+interface:
+  display_name: "Research Evidence"
+  short_description: "Build literature, novelty, and data evidence"
+  default_prompt: "Use $auto-research:research-evidence to build a verified literature, novelty, and data evidence map."
+
+policy:
+  allow_implicit_invocation: false

@@ -1,0 +1,45 @@
+{
+  "schema": "auto-research/venue-profile-v1",
+  "id": "nature",
+  "name": "Nature / Nature Portfolio",
+  "version": 1,
+  "venue_hash": "95474036232369fb",
+  "renderer_preference": [
+    "matplotlib"
+  ],
+  "style_stack": [
+    "science",
+    "nature",
+    "no-latex"
+  ],
+  "figure_width_mm": {
+    "single": 89,
+    "double": 183
+  },
+  "max_height_mm": 247,
+  "font": {
+    "family": "sans-serif",
+    "stack": [
+      "Arial",
+      "Helvetica",
+      "DejaVu Sans"
+    ],
+    "size_pt": 7
+  },
+  "palette": "lib:palette:okabe-ito@1",
+  "colormap": "cmc.batlow",
+  "panel_label": "a",
+  "vector": true,
+  "dpi": 600,
+  "export": [
+    "pdf",
+    "svg",
+    "png"
+  ],
+  "capabilities": [
+    "renderer.matplotlib",
+    "style.scienceplots",
+    "colormap.cmcrameri"
+  ],
+  "notes": "Nature caps figures at 183 mm wide / 247 mm tall; sans-serif, minimum 5 pt after reduction."
+}

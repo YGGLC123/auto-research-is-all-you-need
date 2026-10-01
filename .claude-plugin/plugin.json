@@ -1,0 +1,12 @@
+{
+  "name": "auto-research",
+  "description": "Can you see what the AI did, and is it still your research? A stage-aware research operating system: durable .research-os project state, capability probing with explicit degradation, first-class blockers, gate loop-backs, autonomous loop, template-first figure routing with a versioned figure library, two-stage visual contracts, and an anti-amnesia index (versions, ammo depot, snapshots), plus a research map (what changed, what it stands on, where it trips your taste rules) and a sourced taste ledger. Entry point: /auto-research:pilot.",
+  "version": "3.1.0",
+  "author": {
+    "name": "YGGLC123",
+    "url": "https://github.com/YGGLC123"
+  },
+  "homepage": "https://github.com/YGGLC123/auto-research-is-all-you-need",
+  "repository": "https://github.com/YGGLC123/auto-research-is-all-you-need",
+  "license": "MIT"
+}

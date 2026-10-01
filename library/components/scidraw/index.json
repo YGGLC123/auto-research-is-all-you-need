@@ -1,0 +1,21 @@
+{
+ "schema": "auto-research/component-index-v0",
+ "source": "scidraw",
+ "source_name": "SciDraw",
+ "site": "https://scidraw.io",
+ "acquisition": "manual-import",
+ "status": "not-imported",
+ "generated_at": "2026-08-25T12:51:31Z",
+ "why_not_automatic": "Drawings are uploaded and downloaded one item at a time, each with its own creator and DOI; there is no repository to clone and no bulk endpoint, so an offline index cannot be built without a human download.",
+ "license_model": "source states CC-BY-4.0 for the collection; each imported file must still carry its own recorded license",
+ "approx_upstream_count": 1500,
+ "import_steps": [
+  "Download the drawings you need from https://scidraw.io (each item page carries its own creator, DOI and license).",
+  "Put the SVGs in library/components/scidraw/svg/ (git-ignored).",
+  "Write library/components/scidraw/svg/manifest.json with, per file, {\"license\", \"author\", \"source_url\"} copied from the item page (the DOI link is the source_url).",
+  "Run: component_index.py index build --source dir --name scidraw --repo library/components/scidraw/svg"
+ ],
+ "count": 0,
+ "license_distribution": {},
+ "components": []
+}

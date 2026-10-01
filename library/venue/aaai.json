@@ -1,0 +1,44 @@
+{
+  "schema": "auto-research/venue-profile-v1",
+  "id": "aaai",
+  "name": "AAAI Conference Proceedings",
+  "version": 1,
+  "venue_hash": "05f609077930602d",
+  "renderer_preference": [
+    "matplotlib"
+  ],
+  "style_stack": [
+    "science",
+    "no-latex"
+  ],
+  "figure_width_mm": {
+    "single": 84,
+    "double": 174
+  },
+  "max_height_mm": 230,
+  "font": {
+    "family": "serif",
+    "stack": [
+      "Times New Roman",
+      "Times",
+      "DejaVu Serif"
+    ],
+    "size_pt": 8
+  },
+  "palette": "lib:palette:okabe-ito@1",
+  "colormap": "cmc.batlow",
+  "panel_label": "(a)",
+  "vector": true,
+  "dpi": 600,
+  "export": [
+    "pdf",
+    "svg",
+    "png"
+  ],
+  "capabilities": [
+    "renderer.matplotlib",
+    "style.scienceplots",
+    "colormap.cmcrameri"
+  ],
+  "notes": "AAAI two-column: 3.3 in column / 6.85 in text width; in-figure text must stay at least 6 pt at final size."
+}

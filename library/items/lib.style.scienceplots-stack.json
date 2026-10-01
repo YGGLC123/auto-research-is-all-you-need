@@ -1,0 +1,99 @@
+{
+  "schema": "auto-research/library-item-v0",
+  "id": "lib:style:scienceplots-stack",
+  "kind": "style-profile",
+  "version": 1,
+  "purpose": "The matplotlib style stacks the venue profiles draw on, plus the in-module approximation used when SciencePlots is absent. Owns the publication invariants: Type-42 pdf fonts, live svg text, no LaTeX.",
+  "semantic_tags": [
+    "style",
+    "typography",
+    "publication-ready",
+    "vector-safe"
+  ],
+  "venue_tags": [
+    "nature",
+    "science",
+    "ieee",
+    "rfs",
+    "jf",
+    "aaai",
+    "neurips",
+    "generic"
+  ],
+  "renderer": "matplotlib",
+  "capabilities": [
+    "style.scienceplots"
+  ],
+  "parameters": {
+    "stacks": {
+      "nature": [
+        "science",
+        "nature",
+        "no-latex"
+      ],
+      "science": [
+        "science",
+        "no-latex"
+      ],
+      "ieee": [
+        "science",
+        "ieee",
+        "no-latex"
+      ],
+      "rfs": [
+        "science",
+        "no-latex",
+        "grid"
+      ],
+      "jf": [
+        "science",
+        "no-latex"
+      ],
+      "aaai": [
+        "science",
+        "no-latex"
+      ],
+      "neurips": [
+        "science",
+        "no-latex"
+      ],
+      "generic": [
+        "science",
+        "no-latex"
+      ]
+    },
+    "forced_rcparams": {
+      "pdf.fonttype": 42,
+      "ps.fonttype": 42,
+      "svg.fonttype": "none",
+      "text.usetex": false,
+      "svg.hashsalt": "auto-research-v2.9"
+    },
+    "degraded_approximation": "thin spines (0.5 pt), inward ticks on all four sides, frameless legend, Okabe-Ito colour cycle"
+  },
+  "data_contract": {
+    "required_fields": [],
+    "optional_fields": [],
+    "constraints": [
+      "no-latex must stay in every stack: a LaTeX-backed style turns a missing toolchain into a render crash"
+    ]
+  },
+  "outputs": [
+    "rcparams"
+  ],
+  "preview": "library/previews/lib.style.scienceplots-stack.png",
+  "license": "MIT (SciencePlots)",
+  "attribution": "John D. Garrett, SciencePlots, DOI 10.5281/zenodo.4106649",
+  "provenance": {
+    "source_url": "https://github.com/garrettj403/SciencePlots",
+    "retrieved_at": "2026-08-25T00:00:00Z",
+    "note": "styles are used as installed; this item records the stacks and the degraded fallback, and copies no upstream code"
+  },
+  "compatibility": {
+    "degrades_without": [
+      "style.scienceplots"
+    ],
+    "degraded_flag": "provenance.style_degraded=true"
+  },
+  "quality_state": "active"
+}

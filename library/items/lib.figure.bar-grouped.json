@@ -1,0 +1,108 @@
+{
+  "schema": "auto-research/library-item-v0",
+  "id": "lib:figure:bar-grouped",
+  "kind": "chart-template",
+  "version": 1,
+  "purpose": "Categorical comparison across a small set of named things, optionally split by a second factor: benchmark tables turned into bars, ablations, split comparisons.",
+  "semantic_tags": [
+    "comparison",
+    "benchmark-bars",
+    "ablation",
+    "category-comparison",
+    "error-bars",
+    "bar"
+  ],
+  "venue_tags": [
+    "nature",
+    "science",
+    "ieee",
+    "rfs",
+    "jf",
+    "aaai",
+    "neurips",
+    "generic"
+  ],
+  "renderer": "matplotlib",
+  "template_function": "bar-grouped",
+  "capabilities": [
+    "renderer.matplotlib",
+    "style.scienceplots"
+  ],
+  "parameters": {
+    "aspect": 0.68,
+    "width": "single",
+    "xlabel": null,
+    "ylabel": null,
+    "title": null,
+    "panel": null,
+    "legend": true,
+    "grid": false,
+    "logx": false,
+    "logy": false,
+    "bar_width": 0.8,
+    "xtick_rotation": 0,
+    "reference_line": null,
+    "legend_loc": "best"
+  },
+  "data_contract": {
+    "required_fields": [
+      {
+        "name": "label",
+        "role": "label",
+        "type": "nominal",
+        "note": "one tick per level, in first-appearance order"
+      },
+      {
+        "name": "y",
+        "role": "y",
+        "type": "quantitative"
+      }
+    ],
+    "optional_fields": [
+      {
+        "name": "group",
+        "role": "group",
+        "type": "nominal",
+        "note": "grouped (not stacked) bars"
+      },
+      {
+        "name": "lo",
+        "role": "lo",
+        "type": "quantitative",
+        "note": "with hi, drawn as asymmetric error bars"
+      },
+      {
+        "name": "hi",
+        "role": "hi",
+        "type": "quantitative"
+      }
+    ],
+    "constraints": [
+      "at most ~12 categories stay legible at single-column width",
+      "a zero baseline is kept: this template never truncates the y axis automatically"
+    ]
+  },
+  "outputs": [
+    "pdf",
+    "svg",
+    "png",
+    "spec.vl.json"
+  ],
+  "preview": "library/previews/lib.figure.bar-grouped.png",
+  "compatibility": {
+    "python": ">=3.9",
+    "matplotlib": ">=3.5",
+    "degrades_without": [
+      "style.scienceplots",
+      "colormap.cmcrameri"
+    ]
+  },
+  "quality_state": "trial",
+  "license": "MIT",
+  "attribution": "auto-research v2.9 figure library (self-authored template)",
+  "provenance": {
+    "source_url": "https://github.com/YGGLC123/auto-research-is-all-you-need",
+    "retrieved_at": "2026-08-25T00:00:00Z",
+    "note": "written for this plugin; no third-party code copied"
+  }
+}

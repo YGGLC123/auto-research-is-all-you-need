@@ -1,0 +1,12 @@
+releases/
+__pycache__/
+*.pyc
+
+# v2.9 component library (Route B): the upstream clones and the svg bodies are
+# rebuildable artifacts. Only index.json / attribution.md / README.md are tracked.
+library/components/*/repo/
+library/components/*/svg/
+library/components/*/previews/
+
+# examples/build_demo.py output when run from the repo root
+demo-project/

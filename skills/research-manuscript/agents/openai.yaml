@@ -1,0 +1,7 @@
+interface:
+  display_name: "Research Manuscript"
+  short_description: "Develop the paper story and manuscript"
+  default_prompt: "Use $auto-research:research-manuscript to build the claim-evidence story and revise this manuscript."
+
+policy:
+  allow_implicit_invocation: false

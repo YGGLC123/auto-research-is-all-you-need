@@ -1,0 +1,108 @@
+{
+  "schema": "auto-research/library-item-v0",
+  "id": "lib:figure:event-study",
+  "kind": "chart-template",
+  "version": 1,
+  "purpose": "Dynamic effects around an event time with a confidence band and a zero-line: event studies, impulse responses, pre-trend inspection.",
+  "semantic_tags": [
+    "event-study",
+    "impulse-response",
+    "dynamic-effect",
+    "confidence-band",
+    "pre-trend",
+    "reference-line"
+  ],
+  "venue_tags": [
+    "nature",
+    "science",
+    "ieee",
+    "rfs",
+    "jf",
+    "aaai",
+    "neurips",
+    "generic"
+  ],
+  "renderer": "matplotlib",
+  "template_function": "event-study",
+  "capabilities": [
+    "renderer.matplotlib",
+    "style.scienceplots"
+  ],
+  "parameters": {
+    "aspect": 0.62,
+    "width": "single",
+    "xlabel": null,
+    "ylabel": null,
+    "title": null,
+    "panel": null,
+    "legend": true,
+    "grid": false,
+    "logx": false,
+    "logy": false,
+    "event_time": 0,
+    "band": true,
+    "reference": 0.0,
+    "legend_loc": "best"
+  },
+  "data_contract": {
+    "required_fields": [
+      {
+        "name": "x",
+        "role": "x",
+        "type": "quantitative",
+        "note": "event time, typically negative before the event"
+      },
+      {
+        "name": "y",
+        "role": "y",
+        "type": "quantitative",
+        "note": "the coefficient at that horizon"
+      },
+      {
+        "name": "lo",
+        "role": "lo",
+        "type": "quantitative"
+      },
+      {
+        "name": "hi",
+        "role": "hi",
+        "type": "quantitative"
+      }
+    ],
+    "optional_fields": [
+      {
+        "name": "group",
+        "role": "group",
+        "type": "nominal",
+        "note": "one path per cohort or specification"
+      }
+    ],
+    "constraints": [
+      "a group with any missing lo/hi is drawn without a band and the omission is noted",
+      "event_time=null suppresses the vertical event line"
+    ]
+  },
+  "outputs": [
+    "pdf",
+    "svg",
+    "png",
+    "spec.vl.json"
+  ],
+  "preview": "library/previews/lib.figure.event-study.png",
+  "compatibility": {
+    "python": ">=3.9",
+    "matplotlib": ">=3.5",
+    "degrades_without": [
+      "style.scienceplots",
+      "colormap.cmcrameri"
+    ]
+  },
+  "quality_state": "trial",
+  "license": "MIT",
+  "attribution": "auto-research v2.9 figure library (self-authored template)",
+  "provenance": {
+    "source_url": "https://github.com/YGGLC123/auto-research-is-all-you-need",
+    "retrieved_at": "2026-08-25T00:00:00Z",
+    "note": "written for this plugin; no third-party code copied"
+  }
+}

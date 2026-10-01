@@ -1,0 +1,7 @@
+interface:
+  display_name: "Research Method Design"
+  short_description: "Design and audit the paper's method contract"
+  default_prompt: "Use $auto-research:research-method to formalize the method into a frozen, falsifiable spec with necessity arguments per component."
+
+policy:
+  allow_implicit_invocation: false

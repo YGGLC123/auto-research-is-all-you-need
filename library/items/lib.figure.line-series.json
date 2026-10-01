@@ -1,0 +1,109 @@
+{
+  "schema": "auto-research/library-item-v0",
+  "id": "lib:figure:line-series",
+  "kind": "chart-template",
+  "version": 1,
+  "purpose": "One or more ordered series against a shared x axis: trends, threshold curves, learning curves, dose-response, any 'how does y move with x' reader question.",
+  "semantic_tags": [
+    "time-series",
+    "trend",
+    "threshold-curve",
+    "learning-curve",
+    "dose-response",
+    "reference-line",
+    "line"
+  ],
+  "venue_tags": [
+    "nature",
+    "science",
+    "ieee",
+    "rfs",
+    "jf",
+    "aaai",
+    "neurips",
+    "generic"
+  ],
+  "renderer": "matplotlib",
+  "template_function": "line-series",
+  "capabilities": [
+    "renderer.matplotlib",
+    "style.scienceplots"
+  ],
+  "parameters": {
+    "aspect": 0.68,
+    "width": "single",
+    "xlabel": null,
+    "ylabel": null,
+    "title": null,
+    "panel": null,
+    "legend": true,
+    "grid": false,
+    "logx": false,
+    "logy": false,
+    "marker": true,
+    "band": false,
+    "reference_line": null,
+    "legend_loc": "best"
+  },
+  "data_contract": {
+    "required_fields": [
+      {
+        "name": "x",
+        "role": "x",
+        "type": "quantitative",
+        "note": "temporal values are accepted as numbers"
+      },
+      {
+        "name": "y",
+        "role": "y",
+        "type": "quantitative"
+      }
+    ],
+    "optional_fields": [
+      {
+        "name": "group",
+        "role": "group",
+        "type": "nominal",
+        "note": "one line per level"
+      },
+      {
+        "name": "lo",
+        "role": "lo",
+        "type": "quantitative",
+        "note": "with hi, draws a shaded band when band=true"
+      },
+      {
+        "name": "hi",
+        "role": "hi",
+        "type": "quantitative"
+      }
+    ],
+    "constraints": [
+      "x must be sortable within each group",
+      "rows whose x or y is missing are dropped and counted in qa.json"
+    ]
+  },
+  "outputs": [
+    "pdf",
+    "svg",
+    "png",
+    "spec.vl.json"
+  ],
+  "preview": "library/previews/lib.figure.line-series.png",
+  "compatibility": {
+    "python": ">=3.9",
+    "matplotlib": ">=3.5",
+    "degrades_without": [
+      "style.scienceplots",
+      "colormap.cmcrameri"
+    ]
+  },
+  "quality_state": "trial",
+  "license": "MIT",
+  "attribution": "auto-research v2.9 figure library (self-authored template)",
+  "provenance": {
+    "source_url": "https://github.com/YGGLC123/auto-research-is-all-you-need",
+    "retrieved_at": "2026-08-25T00:00:00Z",
+    "note": "written for this plugin; no third-party code copied"
+  }
+}

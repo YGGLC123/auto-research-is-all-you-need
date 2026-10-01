@@ -1,0 +1,45 @@
+{
+  "schema": "auto-research/venue-profile-v1",
+  "id": "rfs",
+  "name": "Review of Financial Studies",
+  "version": 1,
+  "venue_hash": "f6ce1feb5f7ef44b",
+  "renderer_preference": [
+    "matplotlib"
+  ],
+  "style_stack": [
+    "science",
+    "no-latex",
+    "grid"
+  ],
+  "figure_width_mm": {
+    "single": 120,
+    "double": 165
+  },
+  "max_height_mm": 220,
+  "font": {
+    "family": "serif",
+    "stack": [
+      "Times New Roman",
+      "Times",
+      "DejaVu Serif"
+    ],
+    "size_pt": 9
+  },
+  "palette": "lib:palette:okabe-ito@1",
+  "colormap": "cmc.batlow",
+  "panel_label": "(a)",
+  "vector": true,
+  "dpi": 600,
+  "export": [
+    "pdf",
+    "svg",
+    "png"
+  ],
+  "capabilities": [
+    "renderer.matplotlib",
+    "style.scienceplots",
+    "colormap.cmcrameri"
+  ],
+  "notes": "RFS sets figures across the single text column (about 6.5 in); serif body font, greyscale-safe encodings preferred."
+}

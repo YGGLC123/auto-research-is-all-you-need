@@ -1,0 +1,99 @@
+{
+  "schema": "auto-research/library-item-v0",
+  "id": "lib:figure:heatmap",
+  "kind": "chart-template",
+  "version": 1,
+  "purpose": "A value over a two-way grid: hyperparameter sweeps, correlation and confusion matrices, method-by-horizon result tables that read better as colour than as numbers.",
+  "semantic_tags": [
+    "matrix",
+    "grid-sweep",
+    "correlation-matrix",
+    "confusion-matrix",
+    "hyperparameter-grid",
+    "heatmap"
+  ],
+  "venue_tags": [
+    "nature",
+    "science",
+    "ieee",
+    "rfs",
+    "jf",
+    "aaai",
+    "neurips",
+    "generic"
+  ],
+  "renderer": "matplotlib",
+  "template_function": "heatmap",
+  "capabilities": [
+    "renderer.matplotlib",
+    "style.scienceplots",
+    "colormap.cmcrameri"
+  ],
+  "parameters": {
+    "aspect": 0.8,
+    "width": "single",
+    "xlabel": null,
+    "ylabel": null,
+    "title": null,
+    "panel": null,
+    "legend": false,
+    "grid": false,
+    "logx": false,
+    "logy": false,
+    "annotate": false,
+    "annotate_format": ".2f",
+    "colorbar_label": null,
+    "sort_axes": true,
+    "xtick_rotation": 0,
+    "colormap": null
+  },
+  "data_contract": {
+    "required_fields": [
+      {
+        "name": "x",
+        "role": "x",
+        "type": "nominal",
+        "note": "quantitative levels are sorted numerically"
+      },
+      {
+        "name": "y",
+        "role": "y",
+        "type": "nominal"
+      },
+      {
+        "name": "value",
+        "role": "value",
+        "type": "quantitative",
+        "note": "the cell value"
+      }
+    ],
+    "optional_fields": [],
+    "constraints": [
+      "missing (x,y) cells render as blank, not as zero",
+      "the colormap comes from the venue profile (cmc.batlow) and falls back to viridis"
+    ]
+  },
+  "outputs": [
+    "pdf",
+    "svg",
+    "png",
+    "spec.vl.json"
+  ],
+  "preview": "library/previews/lib.figure.heatmap.png",
+  "compatibility": {
+    "python": ">=3.9",
+    "matplotlib": ">=3.5",
+    "degrades_without": [
+      "style.scienceplots",
+      "colormap.cmcrameri"
+    ]
+  },
+  "quality_state": "trial",
+  "license": "MIT",
+  "attribution": "auto-research v2.9 figure library (self-authored template)",
+  "provenance": {
+    "source_url": "https://github.com/YGGLC123/auto-research-is-all-you-need",
+    "retrieved_at": "2026-08-25T00:00:00Z",
+    "note": "written for this plugin; no third-party code copied"
+  }
+}

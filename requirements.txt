@@ -1,0 +1,4 @@
+# Runtime is stdlib-only for the control plane (research_os.py, lint_package.py).
+# The visual-contract subsystem needs pypdf ONLY for validate-delivery PDF checks
+# and self-test; without it those commands report degraded mode instead of crashing.
+pypdf>=4.0

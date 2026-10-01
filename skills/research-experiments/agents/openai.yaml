@@ -1,0 +1,7 @@
+interface:
+  display_name: "Research Experiments"
+  short_description: "Frozen protocols, immutable runs, reproducible evidence"
+  default_prompt: "Use $auto-research:research-experiments to design, execute, and verify experiments under a frozen protocol with immutable run IDs."
+
+policy:
+  allow_implicit_invocation: false
