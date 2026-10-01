@@ -138,9 +138,11 @@ that are genuinely yours.
 **Claude Code**
 
 ```text
-/plugin marketplace add YGGLC123/auto-research-is-all-you-need
+/plugin marketplace add https://github.com/YGGLC123/auto-research-is-all-you-need
 /plugin install auto-research@auto-research-is-all-you-need
 ```
+
+(With a GitHub SSH key, the short form `YGGLC123/auto-research-is-all-you-need` works too.)
 
 Start a new session, run `/auto-research:pilot`, and talk: *"pick up the appendix paper"*,
 *"show me the map"*, *"the flagship result stays in the main text"*.

@@ -107,9 +107,11 @@ T-01  avoid  "Never write our own work as a weakness"
 **Claude Code**
 
 ```text
-/plugin marketplace add YGGLC123/auto-research-is-all-you-need
+/plugin marketplace add https://github.com/YGGLC123/auto-research-is-all-you-need
 /plugin install auto-research@auto-research-is-all-you-need
 ```
+
+（配好了 GitHub SSH 密钥的话，也可以用简写 `YGGLC123/auto-research-is-all-you-need`。）
 
 开一个新会话，运行 `/auto-research:pilot`，然后直接说话：*“接着做附录那篇”*、*“给我看看地图”*、*“旗舰结果留在正文”*。
 

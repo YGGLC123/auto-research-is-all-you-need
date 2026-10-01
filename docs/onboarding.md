@@ -11,11 +11,13 @@ skipped.
 **From the marketplace (recommended).** Inside Claude Code:
 
 ```
-/plugin marketplace add YGGLC123/auto-research-is-all-you-need
+/plugin marketplace add https://github.com/YGGLC123/auto-research-is-all-you-need
 /plugin install auto-research@auto-research-is-all-you-need
 ```
 
-Start a new session so the skills, hooks and agents load.
+The short form `YGGLC123/auto-research-is-all-you-need` clones over SSH, so it needs a
+GitHub SSH key; the HTTPS URL works for everyone. Start a new session so the skills, hooks
+and agents load.
 
 **From a clone.** `.\install.ps1` (POSIX `./install.sh`) copies a frozen, doctor-verified
 snapshot into `~/.claude/skills/auto-research`, which auto-loads as `auto-research@skills-dir`.
