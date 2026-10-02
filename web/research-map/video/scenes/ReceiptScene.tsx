@@ -20,7 +20,7 @@ type Box = { x: number; y: number; w: number; h: number };
 type Measured = { h: number; needsTop: number; needsBottom: number; badge: Box; row: Box };
 
 /** A pen loop that overshoots its start, the way a hand circles a number. */
-function penLoop(cx: number, cy: number, rx: number, ry: number): string {
+export function penLoop(cx: number, cy: number, rx: number, ry: number): string {
   const pts: string[] = [];
   const n = 56;
   for (let i = 0; i <= n; i++) {

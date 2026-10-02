@@ -40,6 +40,9 @@ node video/stills.mjs out promo-zh-wide:100,700             # single frames as P
 
 There are four cuts, `promo-{zh,en}-{wide,tall}` (16:9 and 9:16, 60 fps, about 26 s). There is
 also `clip-receipt-{zh,en}`: the receipt printing on its own, with no captions, for editors.
+`social-card-{en,zh}` is the repository's social preview (1280×640, in
+`docs/assets/social-preview.png`). GitHub only takes it by hand, under the repository's
+Settings → Social preview.
 The scenes live in `video/scenes/`, the on-screen words in `video/copy.ts`, and the product
 labels come from `src/i18n.ts`, so the film and the page use the same vocabulary.
 

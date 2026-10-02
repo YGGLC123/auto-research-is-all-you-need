@@ -10,7 +10,7 @@ import { Night } from "./scenes/Night";
 import { Outro } from "./scenes/Outro";
 import { RECEIPT_EXIT, ReceiptScene } from "./scenes/ReceiptScene";
 
-const MODELS = { zh: zh as unknown as MapModel, en: en as unknown as MapModel };
+export const MODELS = { zh: zh as unknown as MapModel, en: en as unknown as MapModel };
 
 // Scenes overlap by 30 frames: the next one wipes or pushes in over the last.
 const OVERLAP = 30;

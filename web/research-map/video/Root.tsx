@@ -1,5 +1,6 @@
 import { Composition } from "remotion";
 import { FPS, Promo, RECEIPT_CLIP, ReceiptClip, TOTAL } from "./Promo";
+import { SocialCard } from "./SocialCard";
 import "./video.css";
 
 // One composition per language and shape: 16:9 for GitHub and X, 9:16 for
@@ -26,6 +27,18 @@ export function Root() {
           />
         )),
       )}
+      {(["zh", "en"] as const).map((lang) => (
+        <Composition
+          key={`social-${lang}`}
+          id={`social-card-${lang}`}
+          component={SocialCard}
+          durationInFrames={1}
+          fps={FPS}
+          width={1280}
+          height={640}
+          defaultProps={{ lang }}
+        />
+      ))}
       {(["zh", "en"] as const).map((lang) => (
         <Composition
           key={`receipt-${lang}`}

@@ -1,10 +1,12 @@
 <div align="center">
 
+[English](README.md) · **简体中文**
+
 # auto-research is all you need!
 
 ### AI 替你的论文熬了个通宵。小票在这儿。
 
-一套跑在 **Claude Code** 和 **Codex** 上的科研操作系统，专门回答每个用 AI 做研究的人迟早会问的两个问题：
+一个给 **Claude Code** 和 **Codex** 用的开源科研插件，专门回答每个用 AI 做研究的人迟早会问的两个问题：
 
 **AI 到底干了什么？** &nbsp;·&nbsp; **这还是我的研究吗？**
 
@@ -24,7 +26,8 @@
   </a>
 </p>
 
-<p align="center"><sub>▶ <a href="https://ygglc123.github.io/auto-research-is-all-you-need/assets/promo-zh.mp4">看 26 秒宣传片</a>（<a href="https://ygglc123.github.io/auto-research-is-all-you-need/assets/promo-en.mp4">English</a>）。片子用 <a href="web/research-map/README.md">Remotion</a> 渲染，零件就是地图页面自己的 React 组件，画面里的都是真界面。</sub></p>
+<p align="center"><sub>▶ <a href="https://ygglc123.github.io/auto-research-is-all-you-need/assets/promo-zh.mp4">看 26 秒宣传片</a>（<a href="https://ygglc123.github.io/auto-research-is-all-you-need/assets/promo-en.mp4">English</a>），画面里的都是真界面。
+没装 Claude Code 也能先<a href="https://ygglc123.github.io/auto-research-is-all-you-need/demo/research-map-zh.html">在线试玩</a>：不用安装，点开卡片就行。</sub></p>
 
 ---
 

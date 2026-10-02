@@ -1,5 +1,7 @@
 <div align="center">
 
+**English** · [简体中文](README_zh.md)
+
 # auto-research is all you need!
 
 ### Your AI pulled an all-nighter on your paper. Here's the receipt.
